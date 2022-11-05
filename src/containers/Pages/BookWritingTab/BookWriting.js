@@ -8,14 +8,14 @@ import WritingEditForm from '../../Forms/WritingEditForm';
 import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+// import Accordion from '@material-ui/core/Accordion';
+// import AccordionDetails from '@material-ui/core/AccordionDetails';
+// import AccordionSummary from '@material-ui/core/AccordionSummary';
+// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { CommentSection } from 'react-comments-section';
 import 'react-comments-section/dist/index.css';
 import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
-import Divider from '@material-ui/core/Divider';
+// import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import { useFirestoreQuery } from './hooks';
 import {db} from '../../../firebase';
@@ -333,7 +333,7 @@ function BookWriting(props) {
                                     </Dialog>}
                                 </div>
                             </Grid>
-                            <Grid item xs={12}>                                
+                            {/* <Grid item xs={12}>                                
                                 <Accordion expanded={expanded === 'panel1'} onChange={() => handleChange('panel1')}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                     <Typography style={{fontSize:'14px', fontWeight:'bold', fontFamily:'CookieRun-Regular', color: '#EC407A'}}>Writing-Topic: {metaDatas.topic}</Typography>
@@ -345,7 +345,7 @@ function BookWriting(props) {
                                     </AccordionDetails>
                                     {console.log(metaDatas)}
                                 </Accordion>
-                            </Grid></>
+                            </Grid></> */}</>
                         }
                         {editable== true && actualEditState== true && bookWritingDatas != {} && bookWritingDatas ? 
                             <> {console.log(bookWritingDatas.book_progress)}
@@ -354,7 +354,7 @@ function BookWriting(props) {
                         :
                             <>
                             <Grid item xs={12}>
-                                <div style= {{display: 'flex', flexDirection: 'row', marginTop: "60px", height: "100%"}}>
+                                <div style= {{display: 'flex', flexDirection: 'row', marginTop: "0px", height: "100%"}}>
                                     <Typography component="p" style={{fontFamily:'CookieRun-Regular' , fontSize: "20px"}}>
                                         {bookWritingDatas.my_writing_topic}
                                     </Typography>

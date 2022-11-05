@@ -503,6 +503,15 @@ function CreateQuiz(props) {
     }
     const handleNext= ()=> {
         postToServer();
+        
+        let n = typeAndNumQuestion[selectedIndex+1].num;
+        const x = Array.from({length: n}).map(el => "");
+        setQuestionLabel(x);
+        
+        setMultipleQuesNum([]);
+        setMultipleQuesChoice({});
+        setMultipleQuesChoiceCheck({});
+
         setSelectedIndex(selectedIndex+1);
     };
     const getQuizFormSheet= (n)=> {
@@ -523,6 +532,7 @@ function CreateQuiz(props) {
                                     <FormControl className={classes.formControl} style={{marginLeft: '30px', marginTop: '-3px'}}>
                                         <Select
                                             native
+                                            displayEmpty
                                             value={questionLabel[index]}
                                             onChange={(e)=>handleChangeQuestionLabel(e, index)}
                                             input={<Input className={classes.changeFontFamilyClasses}/>}

@@ -333,7 +333,7 @@ function EssayWriting(props) {
                                     </Dialog>}
                                 </div>
                             </Grid>
-                            <Grid item xs={12}>                                
+                            {/* <Grid item xs={12}>                                
                                 <Accordion expanded={expanded === 'panel1'} sx={{ borderColor: "#6C7780" }} onChange={() => handleChange('panel1')}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                     <Typography style={{fontSize:'14px', fontWeight:'bold', fontFamily:'CookieRun-Regular', color: '#EC407A'}}>Essay-Topic: {metaDatas.topic}</Typography>
@@ -346,7 +346,7 @@ function EssayWriting(props) {
                                     {console.log(metaDatas)}
                                 </Accordion>
                                 <Divider style= {{marginTop:"30px", marginLeft: '-12px', width: '100%'}}/>
-                            </Grid></>
+                            </Grid></> */}</>
                         }
                         {editable== true && actualEditState== true && essayDatas != {} && essayDatas ? 
                             <WritingEditForm type="essay" datas={essayDatas} progress={-1}/>

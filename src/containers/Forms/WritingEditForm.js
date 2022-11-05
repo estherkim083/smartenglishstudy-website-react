@@ -193,7 +193,7 @@ function WritingEditForm(props) {
               <Typography component="h6" style={{fontFamily:'CookieRun-Regular'}}>
                   책 읽음 퍼센티지&nbsp;&nbsp;&nbsp;
               </Typography>
-          <PrettoSlider style= {{width :'50%'}} valueLabelDisplay="auto" defaultValue={progress} onChange={(e, val) => setBookProgress(val)}/>
+          <PrettoSlider style= {{width :'20%', marginLeft: '20px'}} valueLabelDisplay="auto" defaultValue={progress} onChange={(e, val) => setBookProgress(val)}/>
           </div>
         </Grid></>}
         <Grid item xs={12}>

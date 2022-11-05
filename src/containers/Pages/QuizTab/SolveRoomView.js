@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 
+import { fade } from '@material-ui/core/styles/colorManipulator';
 import { useCountdown } from './useCountdown';
 
 import { storage } from '../../../firebase';
@@ -175,13 +176,14 @@ function SolveRoomView(props) {
             <div style={{display: 'flex', flexDirection: 'column'}}>
                 {x.map((_, index) => {
                     return (
-                        <div style={{position: 'relative', marginTop: '20px'}}>
+                        <div style={{position: 'relative', marginTop: '50px'}}>
                             {Object.keys(datas).length!= 0 && datas[index+1]!= undefined && datas[index+1]["label"]!= undefined && 
                             <>
-                                <Grid item xs={12}>
+                                <Grid item xs={12}><Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="80%" height={40}>
                                     <Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'15px', marginTop: '10px'}}>
                                         {index+1}번. {datas[index+1]["label"]}문제.
                                     </Typography>
+                                    </Box>
                                 </Grid>
                                 
                                 {datas[index+1]["label"]=="서술형" && 
@@ -362,10 +364,10 @@ function SolveRoomView(props) {
                                 <audio controls="controls" src={listeningmp3file} autoplay></audio>
                             </Grid>
                         }
-                        <Grid item xs={12}>
+                        <Grid item xs={12}><Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="80%" height={40}>
                         {typeAndNumQuestion.length != 0 &&typeAndNumQuestion[quesId] != undefined && <Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'23px'}}>
                             {quesId+1} 번.&nbsp;&nbsp;{typeAndNumQuestion[quesId]["type"]} 문제&nbsp;&nbsp;&nbsp;1번-{typeAndNumQuestion[quesId]["num"]}번
-                        </Typography>}
+                        </Typography>}</Box>
                         </Grid>
                         <><Grid item xs={12}>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>

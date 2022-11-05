@@ -11,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 import TextField from '@material-ui/core/TextField';
 import SyncIcon from '@material-ui/icons/Sync';
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
 import { storage } from '../../../firebase';
 import { ref, getDownloadURL } from "firebase/storage";
@@ -162,13 +163,14 @@ function QuizView(props) {
             <div style={{display: 'flex', flexDirection: 'column'}}>
                 {x.map((_, index) => {
                     return (
-                        <div style={{position: 'relative', marginTop: '20px'}}>
+                        <div style={{position: 'relative', marginTop: '50px'}}>
                             {Object.keys(datas).length!= 0 && datas[index+1]!= undefined && datas[index+1]["label"]!= undefined && 
                             <>
-                                <Grid item xs={12}>
+                                <Grid item xs={12}> <Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="80%" height={40}>
                                     <Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'15px', marginTop: '10px'}}>
                                         {index+1}번. {datas[index+1]["label"]}문제.
                                     </Typography>
+                                    </Box>
                                 </Grid>
                                 
                                 {datas[index+1]["label"]=="서술형" && 
@@ -318,9 +320,10 @@ function QuizView(props) {
                         </Grid>
                     }
                     <Grid item xs={12}>
-                    {typeAndNumQuestion.length != 0 &&<Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'23px'}}>
-                        {quesId} 번.&nbsp;&nbsp;{typeAndNumQuestion[quesId-1]["type"]} 문제&nbsp;&nbsp;&nbsp;1번-{typeAndNumQuestion[quesId-1]["num"]}번
-                    </Typography>}
+                    {typeAndNumQuestion.length != 0 &&
+                                <Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="80%" height={40}><Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'23px'}}>
+                                    유형 {quesId} 번.&nbsp;&nbsp;{typeAndNumQuestion[quesId-1]["type"]} 문제&nbsp;&nbsp;&nbsp;1번-{typeAndNumQuestion[quesId-1]["num"]}번
+                                </Typography></Box>}
                     </Grid>
                     {editBigQuestion? 
                         <><Grid item xs={12}>

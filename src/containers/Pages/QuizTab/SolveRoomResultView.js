@@ -10,6 +10,7 @@ import axios from 'axios';
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 import TextField from '@material-ui/core/TextField';
+import { fade } from '@material-ui/core/styles/colorManipulator';
 import SyncIcon from '@material-ui/icons/Sync';
 
 import { storage } from '../../../firebase';
@@ -210,13 +211,13 @@ function SolveRoomResultView(props) {
             <div style={{display: 'flex', flexDirection: 'column'}}>
                 {x.map((_, index) => {
                     return (
-                        <div style={{position: 'relative', marginTop: '20px'}}>
+                        <div style={{position: 'relative', marginTop: '50px'}}>
                             {Object.keys(datas).length!= 0 && datas[index+1]!= undefined && datas[index+1]["label"]!= undefined && 
                             <>
-                                <Grid item xs={12}>
+                                <Grid item xs={12}><Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="80%" height={40}>
                                     <Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'15px', marginTop: '10px'}}>
                                         {index+1}번. {datas[index+1]["label"]}문제.
-                                    </Typography>
+                                    </Typography></Box>
                                 </Grid>
                                 
                                 {datas[index+1]["label"]=="서술형" && 
@@ -427,9 +428,9 @@ function SolveRoomResultView(props) {
                         </Grid>
                     }
                     <Grid item xs={12}>
-                    {hasResult && typeAndNumQuestion.length != 0 && typeAndNumQuestion[quesId]!= undefined &&<Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'23px'}}>
+                    {hasResult && typeAndNumQuestion.length != 0 && typeAndNumQuestion[quesId]!= undefined &&<Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="80%" height={40}><Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'23px'}}>
                         {quesId+1} 번.&nbsp;&nbsp;{typeAndNumQuestion[quesId]["type"]} 문제&nbsp;&nbsp;&nbsp;1번-{typeAndNumQuestion[quesId]["num"]}번
-                    </Typography>}
+                    </Typography></Box>}
                     {hasResult== false && 
                         <Typography component="h6" style={{ fontFamily: 'CookieRun-Regular', fontSize: '15px' }}>
                             결과가 없습니다.

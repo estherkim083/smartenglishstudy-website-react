@@ -344,14 +344,6 @@ function ReadingView(props) {
                 >
                     <Grid item xs={12}>
                         <div style= {{display: 'flex', flexDirection: 'row', marginTop: "30px", height: "100%"}}>
-                            <Typography component="h1" style={{fontFamily:'CookieRun-Regular', fontSize: "20px"}}>
-                                {/*{String.fromCharCode(60)}{String.fromCharCode(60)} 제목  {String.fromCharCode(62)}{String.fromCharCode(62)}*/}
-                                🍀 제목 🍀
-                            </Typography>
-                        </div>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <div style= {{display: 'flex', flexDirection: 'row', marginTop: "0px", height: "100%"}}>
                             <Typography component="p" style={{fontFamily:'CookieRun-Regular' , fontSize: "20px"}}>
                                 {title} 
                             </Typography>

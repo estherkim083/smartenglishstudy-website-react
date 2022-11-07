@@ -415,7 +415,7 @@ function VocabView(props) {
                             <div style= {{display: 'flex', flexDirection: 'column'}}>
                             <TextField
                                 InputProps={{                    
-                                    style : {width :"100%", fontFamily:'CookieRun-Regular', borderColor: "#EC407A",
+                                    style : {width :"90%", fontFamily:'CookieRun-Regular', borderColor: "#EC407A",
                                         marginTop: '0px', marginLeft: "15px"},
                                     onChange: handleKeyWordInputChange
                                 }}
@@ -425,7 +425,7 @@ function VocabView(props) {
                              />
                              <TextField
                                  InputProps={{                    
-                                     style : {width :"100%", fontFamily:'CookieRun-Regular', borderColor: "#EC407A",
+                                     style : {width :"90%", fontFamily:'CookieRun-Regular', borderColor: "#EC407A",
                                          marginTop: '10px', marginLeft: "15px"},
                                      onChange: handleKorMeaningInputChange
                                  }}
@@ -435,7 +435,7 @@ function VocabView(props) {
                               />
                               <TextField
                                   InputProps={{                    
-                                      style : {width :"100%", fontFamily:'CookieRun-Regular', borderColor: "#EC407A",
+                                      style : {width :"90%", fontFamily:'CookieRun-Regular', borderColor: "#EC407A",
                                           marginTop: '10px', marginLeft: "15px"},
                                       onChange: handleEnMeaningInputChange
                                   }}
@@ -445,7 +445,7 @@ function VocabView(props) {
                                />
                                <TextField
                                    InputProps={{                    
-                                       style : {width :"100%", fontFamily:'CookieRun-Regular', borderColor: "#EC407A",
+                                       style : {width :"90%", fontFamily:'CookieRun-Regular', borderColor: "#EC407A",
                                            marginTop: '10px', marginLeft: "15px"},
                                        onChange: handleSynonymInputChange
                                    }}
@@ -455,7 +455,7 @@ function VocabView(props) {
                                 />
                                 <TextField
                                     InputProps={{                    
-                                        style : {width :"100%", fontFamily:'CookieRun-Regular', borderColor: "#EC407A",
+                                        style : {width :"90%", fontFamily:'CookieRun-Regular', borderColor: "#EC407A",
                                             marginTop: '10px', marginLeft: "15px"},
                                         onChange: handleAntonymInputChange
                                     }}
@@ -465,7 +465,7 @@ function VocabView(props) {
                                  />
                                  <TextField
                                      InputProps={{                    
-                                         style : {width :"100%", fontFamily:'CookieRun-Regular', borderColor: "#EC407A",
+                                         style : {width :"90%", fontFamily:'CookieRun-Regular', borderColor: "#EC407A",
                                              marginTop: '10px', marginLeft: "15px"},
                                          onChange: handleExSentenceInputChange
                                      }}
@@ -475,7 +475,7 @@ function VocabView(props) {
                                   />
                                   <TextField
                                       InputProps={{                    
-                                          style : {width :"100%", fontFamily:'CookieRun-Regular', borderColor: "#EC407A",
+                                          style : {width :"90%", fontFamily:'CookieRun-Regular', borderColor: "#EC407A",
                                               marginTop: '10px', marginLeft: "15px"},
                                           onChange: handlePronounicationInputChange
                                       }}

@@ -175,7 +175,7 @@ function Home() {
               </Typography>
         </Grid>
         <Grid item xs ={5}> 
-              <img src={circleshoes} width="450px" height="300px" style={{marginTop:'10px'}}/>
+              <img src={circleshoes} width="450px" height="350px" style={{marginTop:'10px'}}/>
         </Grid>
       </Grid>
         {/* <hr width="100%" 

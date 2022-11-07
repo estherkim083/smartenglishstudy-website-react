@@ -20,12 +20,11 @@ const useStyles = makeStyles((theme) => ({
 function ReadingCreate(props) {
 
     const classes = useStyles();
-    let { id } = useParams();
+    let { id, myinbox } = useParams();
     const [ loadMyInboxEdit, setLoadMyInboxEdit ]= useState(null);
 
     useEffect(()=> {
-        const strId= id.toString();
-        if(strId.includes("888888888")) {
+        if(myinbox=="myinbox") {
             setLoadMyInboxEdit(true);
         }else{
             setLoadMyInboxEdit(false);

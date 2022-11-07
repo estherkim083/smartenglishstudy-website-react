@@ -33,7 +33,7 @@ function Quiz(props) {
     const { height, width } = useWindowDimensions();
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
     const handleCreateQuizRoom= () => {
-        window.location.href="/quiz/make-quiz/create/"+9999999999;
+        window.location.href="/quiz/make-quiz/create/";
     };
     useEffect(() => {
         var author= localStorage.getItem("user_name");

@@ -100,7 +100,8 @@ function EssayWritingCreateEditForm(props) {
       txt+= text[i];
     }
     console.log(txt); // about topic input value text (about_content)
-    if(id != 9999999999) {
+    
+    if(id!= null || id!== undefined) {
         axios
           .post(baseURL+"writing/edit-essay-room/"+id , {            
             topic: topicVal,
@@ -164,7 +165,8 @@ function EssayWritingCreateEditForm(props) {
   useEffect(() => {
     
     if(isLoaded) {
-      if(id != 9999999999) { // 세부 보기로 글쓰기 방 내용을 변경할 경우.
+      
+      if(id!= null || id!== undefined) { // 세부 보기로 글쓰기 방 내용을 변경할 경우.
         axios
           .get(baseURL+"writing/edit-essay-room/"+id, {
             headers: {
@@ -208,7 +210,7 @@ function EssayWritingCreateEditForm(props) {
       const metadata = {
         contentType: 'image/*',
       };
-      if(id == 9999999999) {
+      if(id!= null || id!== undefined) {
           const hashes= makeid(10);
           const fileRef= ref(storage, `posts/essayroom/${hashes}/${file.name}`);
           uploadBytes(fileRef, file, metadata).then(async()=> {

@@ -10,9 +10,13 @@ import {registerPost} from '../../../axios';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import { Redirect } from 'react-router';
+import Snackbar from '@material-ui/core/Snackbar';
+
 
 function Register(props) {
 
+  const [toast, setToast]= useState(null);
+  const [toastMessage, setToastMessage]= useState(null);
   const submitForm = values => {
         var userInfo= Map();
         console.log(values);
@@ -29,7 +33,22 @@ function Register(props) {
                       setRedirect(true);
                   }, 1000);
               })
-              .catch(error => {});
+              .catch(error => {
+                setToast("error");
+                if(error.response.data== "이 이메일 계정은 이미 존재합니다") {
+                  setToastMessage(error.response.data);
+                }
+                setNotif({
+                  ...notifState,
+                  open2: true,
+                });
+                setTimeout(() => {
+                  setNotif({
+                    ...notifState,
+                    open2: false,
+                  });
+                }, 2000);
+              });
         
   };
 
@@ -39,6 +58,25 @@ function Register(props) {
   const [redirect, setRedirect ]= useState(false);
   var session_token=localStorage.getItem('token')
 
+  const [notifState, setNotif] = useState({
+    open: false,
+    open2: false,
+    vertical: 'bottom',
+    horizontal: 'center',
+  });
+  const {
+    vertical,
+    horizontal,
+    open,
+    open2
+  } = notifState;
+  
+  const handleClose2 = () => {
+    setNotif({
+      ...notifState,
+      open2: false
+    });
+  };
 
   if (redirect) {
     return <Redirect push to="/" />;
@@ -62,6 +100,17 @@ function Register(props) {
             <RegisterForm onSubmit={(values) => submitForm(values)} />
           </div>
         </div>
+        {toast!= null && toastMessage!= null && 
+            <Snackbar
+              anchorOrigin={{ vertical, horizontal }}
+              open={open2}
+              onClose={() => handleClose2()}
+              ContentProps={{
+                'aria-describedby': 'message-id',
+              }}
+              message={<span id="message-id">{toastMessage}</span>}
+            />
+        }
       </div>
     );
   }

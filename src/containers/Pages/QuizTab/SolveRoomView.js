@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
+import Loading from '../../../components/Loading';
 
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { useCountdown } from './useCountdown';
@@ -43,9 +44,7 @@ function SolveRoomView(props) {
     const [ bigQues, setBigQues]= useState(''); 
     const [ bigBodyQues, setBigBodyQues]= useState(''); 
     const [ questionNum, setQuestionNum]= useState(0);
-    const [minute, setMinute] = React.useState(0);
-    const [time, setTime] = React.useState(0);
-    const [countDown, setCountDown]= useState(0);
+    const [time, setTime] = React.useState(null);
 
     const [days, hours, minutes, seconds] = useCountdown(time);
 
@@ -111,7 +110,7 @@ function SolveRoomView(props) {
                     setPageLoaded(true);
                 })
                 .catch(error => {});
-            
+                setPageLoaded(true);
         }
     },[isLoaded]);
     
@@ -321,8 +320,11 @@ function SolveRoomView(props) {
         postToServer();
         selectQuestionTypeNum(quesId+1);
     };
-    
-    if (days + hours + minutes + seconds <= 0) {
+
+    if(pageLoaded== false) {
+        return (<Loading/>);
+    }
+    else if (seconds==null) {
         return (
             <div className={classes.root}>
             <PapperBlock title="퀴즈 문제풀이방" whiteBg icon="ion-ios-grid-outline" desc="

@@ -82,7 +82,7 @@ function ListeningEditForm(props) {
     
     console.log(audioFileName);
      if(txt!=='') {
-      if(id != 9999999999) {
+      if(id!= null || id!== undefined) {
 
         axios
           .post(baseURL+"listening/listening-edit-scripts/"+id , {
@@ -154,7 +154,7 @@ function ListeningEditForm(props) {
   useEffect(() => {
     
     if(isLoaded) {
-      if(id != 9999999999) {
+      if(id!= null || id!== undefined) {
 
         axios
           .get(baseURL+"listening/listening-get-data/"+id, {

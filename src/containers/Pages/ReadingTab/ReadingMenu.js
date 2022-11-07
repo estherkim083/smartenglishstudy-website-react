@@ -9,7 +9,7 @@ import useWindowDimensions from '../../../useWindowDimensions';
 function ReadingMenu(props) {
     const { height, width } = useWindowDimensions();
     const handleReadingFab= () => {
-        window.location.href='/reading/create/'+9999999999;
+        window.location.href='/reading/create/';
     };
     useEffect(() => {
         var author= localStorage.getItem("user_name");
@@ -31,7 +31,7 @@ function ReadingMenu(props) {
                     <BorderedTable />
                 </div>
             </PapperBlock>
-            <Fab color="secondary" aria-label="add" style={{position: 'fixed', marginLeft: `calc(193% - ${width}px)`, bottom: '10'}} onClick={handleReadingFab}>
+            <Fab color="secondary" aria-label="add" style={{position: 'relative', marginLeft: `calc(193% - ${width}px)`, bottom: `calc(190%-${height}px))`}} onClick={handleReadingFab}>
                 <AddIcon />
             </Fab>
         </div>

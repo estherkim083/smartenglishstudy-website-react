@@ -197,7 +197,7 @@ function MyInboxTable(props) {
                   <Link
                     color="textPrimary"
                     className={classes.link}
-                    href={'/reading/create/' + 888888888 + n.id}
+                    href={'/reading/create/' + n.id+'/myinbox'}
                   >
                     <EditIcon></EditIcon>
                   </Link>

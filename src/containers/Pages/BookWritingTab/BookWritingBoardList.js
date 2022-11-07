@@ -21,7 +21,7 @@ function BookWritingBoardList(props) {
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
 
     const handleWritingFab= ()=> {
-        window.location.href= '/writing/book/create/'+9999999999;
+        window.location.href= '/writing/book/create/';
     };
 
 

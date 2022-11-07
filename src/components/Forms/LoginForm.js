@@ -30,6 +30,7 @@ import { useParams } from "react-router-dom";
 import { Map } from 'immutable';
 import axios from 'axios';
 import GoogleIconImage from '../../images/btn_google_light_normal_ios_2x.png';
+import Snackbar from '@material-ui/core/Snackbar';
 
 // validation functions
 const required = value => (value === null ? 'Required' : undefined);
@@ -45,6 +46,23 @@ const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disabl
 
 function LoginForm(props) {
   let { type } = useParams();
+  const [toast, setToast]= useState(null);
+  const [toastMessage, setToastMessage]= useState(null);
+  
+  const [notifState, setNotif] = useState({
+    open: false,
+    open2: false,
+    vertical: 'bottom',
+    horizontal: 'center',
+  });
+  const {
+    vertical,
+    horizontal,
+    open,
+    open2
+  } = notifState;
+  
+
   const googleLogin = useGoogleLogin({
     onSuccess: async tokenResponse => {
       console.log(tokenResponse);
@@ -67,7 +85,21 @@ function LoginForm(props) {
             localStorage.setItem("token", token);
             window.location.href='/';
           })
-        .catch(error => {});
+        .catch(error => {
+          
+          setToast("error");
+          setToastMessage(error.response.data);
+          setNotif({
+            ...notifState,
+            open2: true,
+          });
+          setTimeout(() => {
+            setNotif({
+              ...notifState,
+              open2: false,
+            });
+          }, 2000);
+        });
     },
     onError: errorResponse => console.log(errorResponse)
   });
@@ -105,7 +137,21 @@ function LoginForm(props) {
           window.location.href='/';
         
     })
-    .catch(error => {});
+    .catch(error => {
+      
+      setToast("error");
+      setToastMessage(error.response.data);
+      setNotif({
+        ...notifState,
+        open2: true,
+      });
+      setTimeout(() => {
+        setNotif({
+          ...notifState,
+          open2: false,
+        });
+      }, 2000);
+    });
 
   };
   const KakaoLogin= () => {
@@ -152,7 +198,21 @@ function LoginForm(props) {
             localStorage.setItem("token", token);
             window.location.href='/';
           })
-        .catch(error => {});
+        .catch(error => {
+          
+          setToast("error");
+          setToastMessage(error.response.data);
+          setNotif({
+            ...notifState,
+            open2: true,
+          });
+          setTimeout(() => {
+            setNotif({
+              ...notifState,
+              open2: false,
+            });
+          }, 2000);
+        });
     });
 
   }
@@ -352,6 +412,16 @@ function LoginForm(props) {
           </div>
         </form>
       </section>
+        {toast!= null && toastMessage!= null && 
+            <Snackbar
+              anchorOrigin={{ vertical, horizontal }}
+              open={open2}
+              ContentProps={{
+                'aria-describedby': 'message-id',
+              }}
+              message={<span id="message-id">{toastMessage}</span>}
+            />
+        }
     </Paper>
   );
 }

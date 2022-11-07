@@ -7,9 +7,25 @@ import LoginForm from '../../../components/Forms/LoginForm';
 import styles from '../../../components/Forms/user-jss';
 import {loginGet} from '../../../axios';
 import { Redirect } from 'react-router';
+import Snackbar from '@material-ui/core/Snackbar';
 import { Map } from 'immutable';
 
 function Login(props) {
+
+  const [toast, setToast]= useState(null);
+  const [toastMessage, setToastMessage]= useState(null);
+  const [notifState, setNotif] = useState({
+    open: false,
+    open2: false,
+    vertical: 'bottom',
+    horizontal: 'center',
+  });
+  const {
+    vertical,
+    horizontal,
+    open,
+    open2
+  } = notifState;
 
   const submitForm = values => {
     
@@ -30,7 +46,21 @@ function Login(props) {
                   }, 1000); 
                     
               })
-              .catch(error => {});
+              .catch(error => {
+                
+                  setToast("error");
+                  setToastMessage(error.response.data);
+                  setNotif({
+                    ...notifState,
+                    open2: true,
+                  });
+                  setTimeout(() => {
+                    setNotif({
+                      ...notifState,
+                      open2: false,
+                    });
+                  }, 2000);
+              });
   };
 
   const title = brand.name + ' - Login';
@@ -57,6 +87,16 @@ function Login(props) {
             <LoginForm onSubmit={(values) => submitForm(values)} />
           </div>
         </div>
+        {toast!= null && toastMessage!= null && 
+            <Snackbar
+              anchorOrigin={{ vertical, horizontal }}
+              open={open2}
+              ContentProps={{
+                'aria-describedby': 'message-id',
+              }}
+              message={<span id="message-id">{toastMessage}</span>}
+            />
+        }
       </div>
     );
   }

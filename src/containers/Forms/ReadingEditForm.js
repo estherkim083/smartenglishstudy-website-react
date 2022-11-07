@@ -20,7 +20,7 @@ function ReadingEditForm(props) {
 
   const { classes } = props;
   const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
-  let { id } = useParams();
+  let { id, myinbox } = useParams();
   
   // const [dataEditorState, setEditorState] = useState(tempEditorState);
   const [titleVal, setTitleVal]= useState(null);
@@ -66,13 +66,11 @@ function ReadingEditForm(props) {
 
      if(txt!=='') {
       
-      const strId= id.toString();
-      if(strId.includes("888888888")) {
-          console.log("hi");
-          var idToSend= strId.replace("888888888", "");
+      if(myinbox== "myinbox") {
+          const strId= id.toString();
           axios
             .post(baseURL+"mypage/inbox-edit/" , {            
-              key: idToSend,
+              key: strId,
               텍스트: txt,
             },
             {
@@ -90,7 +88,7 @@ function ReadingEditForm(props) {
               window.location.href="/my-inbox";
             });
       }
-      else if(id != 9999999999) { // 내용을 편집하는 경우.
+      else if(id!= null || id!== undefined) { // 내용을 편집하는 경우.
 
         axios
           .post(baseURL+"reading/reading-data-edit/"+id , {
@@ -157,10 +155,8 @@ function ReadingEditForm(props) {
   useEffect(() => {
     
     if(isLoaded) {
-      const strId= id.toString();
-      if(strId.includes("888888888")) {
-        console.log("hi");
-        var idToSend= strId.replace("888888888", "");
+      if(myinbox=="myinbox") {
+        const strId= id.toString();
         axios
           .get(baseURL+"mypage/inbox-edit/", {
             headers: {
@@ -171,7 +167,7 @@ function ReadingEditForm(props) {
               accept: 'application/json',
             },
             params: {
-                key: idToSend
+                key: strId
 
             }
           })
@@ -194,7 +190,7 @@ function ReadingEditForm(props) {
           })
           .catch(error => {});
       }
-      else if(id != 9999999999) {
+      else if(id!= null || id!== undefined) {
 
         axios
           .get(baseURL+"reading/reading-get-data/"+id, {

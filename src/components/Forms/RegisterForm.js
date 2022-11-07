@@ -28,6 +28,7 @@ import NaverIconImage from '../../images/naver_logo.png';
 import styled from 'styled-components';
 import { Map } from 'immutable';
 import { useParams } from "react-router-dom";
+import Snackbar from '@material-ui/core/Snackbar';
 
 
 // validation functions
@@ -56,6 +57,22 @@ function RegisterForm(props) {
   const [fetchedOnce, setFetchedOnce] = useState(false);
   const location= useLocation();
   const CODE= location.search.split('=')[1];
+  
+  const [notifState, setNotif] = useState({
+    open: false,
+    open2: false,
+    vertical: 'bottom',
+    horizontal: 'center',
+  });
+  const {
+    vertical,
+    horizontal,
+    open,
+    open2
+  } = notifState;
+
+  const [toast, setToast]= useState(null);
+  const [toastMessage, setToastMessage]= useState(null);
 
   const NaverRegister = ()=> {
     var token= location.search.split('=')[1];
@@ -69,7 +86,23 @@ function RegisterForm(props) {
           window.location.href='/';
         
     })
-    .catch(error => {});
+    .catch(error => {
+      
+      setToast("error");
+      if(error.response.data== "이 이메일 계정은 이미 존재합니다") {
+        setToastMessage(error.response.data);
+      }
+      setNotif({
+        ...notifState,
+        open2: true,
+      });
+      setTimeout(() => {
+        setNotif({
+          ...notifState,
+          open2: false,
+        });
+      }, 2000);
+    });
 
     };
 
@@ -118,7 +151,22 @@ function RegisterForm(props) {
             localStorage.setItem("token", token);
             window.location.href='/';
           })
-        .catch(error => {});
+          .catch(error => {
+            setToast("error");
+            if(error.response.data== "이 이메일 계정은 이미 존재합니다") {
+              setToastMessage(error.response.data);
+            }
+            setNotif({
+              ...notifState,
+              open2: true,
+            });
+            setTimeout(() => {
+              setNotif({
+                ...notifState,
+                open2: false,
+              });
+            }, 2000);
+          });
     });
 
   } 
@@ -160,7 +208,22 @@ function RegisterForm(props) {
               }, 1000);
             
           })
-        .catch(error => {});
+        .catch(error => {
+            setToast("error");
+            if(error.response.data== "이 이메일 계정은 이미 존재합니다") {
+              setToastMessage(error.response.data);
+            }
+            setNotif({
+              ...notifState,
+              open2: true,
+            });
+            setTimeout(() => {
+              setNotif({
+                ...notifState,
+                open2: false,
+              });
+            }, 2000);
+        });
     },
     onError: errorResponse => console.log(errorResponse)
   });
@@ -405,6 +468,16 @@ function RegisterForm(props) {
           </Button>
         </section>
       )}
+      {toast!= null && toastMessage!= null && 
+          <Snackbar
+            anchorOrigin={{ vertical, horizontal }}
+            open={open2}
+            ContentProps={{
+              'aria-describedby': 'message-id',
+            }}
+            message={<span id="message-id">{toastMessage}</span>}
+          />
+      }
     </Paper>
   );
 }

@@ -116,12 +116,12 @@ function WritingEditForm(props) {
         })
         .then(function (res) {  
             console.log(res);
-            window.location.href= "/writing/book/"+id+ "/"+userid+ '/'+email;
+            window.location.href= "/smartenglishstudy-website-react/writing/book/"+id+ "/"+userid+ '/'+email;
         });
     }else if(type=="essay") {
 
       axios
-        .post(baseURL+"writing/get-essay-writing-data/edit/"+id+"/"+userid , {
+        .post(baseURL+"/smartenglishstudy-website-reactwriting/get-essay-writing-data/edit/"+id+"/"+userid , {
           my_writing_topic: titleVal,
           my_writing_content: txt,
           book_progress: bookProgress
@@ -139,7 +139,7 @@ function WritingEditForm(props) {
         })
         .then(function (res) {  
             console.log(res);
-           window.location.href= "/writing/essay/"+id+ "/"+userid+ '/'+email;
+           window.location.href= "/smartenglishstudy-website-react/writing/essay/"+id+ "/"+userid+ '/'+email;
         });
     }
 

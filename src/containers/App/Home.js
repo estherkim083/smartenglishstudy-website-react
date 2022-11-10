@@ -86,7 +86,7 @@ function Home() {
             </Typography>
         </Grid>
         <Grid item xs ={12}> 
-            <Button className={classes.button} onClick={()=> {window.location.href= '/auth/email'}}>시작하세요.</Button>     
+            <Button className={classes.button} onClick={()=> {window.location.href= '/smartenglishstudy-website-react/auth/email'}}>시작하세요.</Button>     
         </Grid>
       </Grid>
       <div style={{backgroundColor:'black', width:'3000px', height:'500px', marginLeft: '-100px', position: 'relative', marginTop: '30px'}}></div>

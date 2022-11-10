@@ -209,7 +209,7 @@ function MyProfile(props) {
         localStorage.removeItem("email");
         localStorage.removeItem("token");
 
-        window.location.href= "/auth/email";
+        window.location.href= "/smartenglishstudy-website-react/auth/email";
 
     };
     const handlePostTextMyInbox= () =>{
@@ -233,7 +233,7 @@ function MyProfile(props) {
             });
         
             setInboxTextFieldInput('');
-            window.location.href= "/my-inbox";
+            window.location.href= "/smartenglishstudy-website-react/my-inbox";
     };
 
     const handleResetPasswordKeyDown =(event, inputval) => {
@@ -413,7 +413,7 @@ function MyProfile(props) {
         var author= localStorage.getItem("user_name");
         var emails= localStorage.getItem("email");
         if(author === null) {
-            window.location.href="/auth/email";
+            window.location.href="/smartenglishstudy-website-react/auth/email";
         }
         setUserName(author);
         setEmail(emails);
@@ -528,7 +528,7 @@ function MyProfile(props) {
             })
             .then(function (res) {  
                 console.log(res);
-                window.location.href="/my-profile";
+                window.location.href="/smartenglishstudy-website-react/my-profile";
             });
     };
 

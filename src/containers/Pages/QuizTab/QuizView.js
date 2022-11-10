@@ -58,7 +58,7 @@ function QuizView(props) {
     useEffect(() => {
         var author= localStorage.getItem("user_name");
         if(author === null) {
-            window.location.href="/auth/email";
+            window.location.href="/smartenglishstudy-website-react/auth/email";
         }
         if(localStorage.getItem("MyProfileOnce")) {
             localStorage.removeItem("MyProfileOnce");
@@ -151,7 +151,7 @@ function QuizView(props) {
             .catch(error => {});
     };
     const handleGoOut=()=> {
-        window.location.href="/quiz/make-quiz";
+        window.location.href="/smartenglishstudy-website-react/quiz/make-quiz";
     };
 
     const getQuestionSheet= ()=> {
@@ -281,7 +281,7 @@ function QuizView(props) {
           .catch(function (error) {
           })
           .then(function (res) {  
-              window.location.href= "/quiz/make-quiz/"+id;
+              window.location.href= "/smartenglishstudy-website-react/quiz/make-quiz/"+id;
           });
 
     };

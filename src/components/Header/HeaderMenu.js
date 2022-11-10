@@ -216,7 +216,7 @@ HeaderMenu.propTypes = {
 
 HeaderMenu.defaultProps = {
   isLogin: true,
-  logoLink: '/',
+  logoLink: '/smartenglishstudy-website-react',
 };
 
 export default withStyles(styles)(HeaderMenu);

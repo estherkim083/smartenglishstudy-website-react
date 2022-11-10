@@ -90,7 +90,7 @@ function EditorPageView(props) {
     useEffect(() => {
         var author= localStorage.getItem("user_name");
         if(author === null) {
-            window.location.href="/auth/email";
+            window.location.href="/smartenglishstudy-website-react/auth/email";
         }
         if(localStorage.getItem("MyProfileOnce")) {
             localStorage.removeItem("MyProfileOnce");
@@ -241,7 +241,7 @@ function EditorPageView(props) {
                 }
                 })
                 .then(function (res) {  
-                    window.location.href= '/writing/editorpage/book/'+id;
+                    window.location.href= '/smartenglishstudy-website-react/writing/editorpage/book/'+id;
                 });
         }else if(label== "essay") {
             axios
@@ -268,7 +268,7 @@ function EditorPageView(props) {
                 }
                 })
                 .then(function (res) {  
-                    window.location.href= '/writing/editorpage/essay/'+id;
+                    window.location.href= '/smartenglishstudy-website-react/writing/editorpage/essay/'+id;
                 });
         }
     };

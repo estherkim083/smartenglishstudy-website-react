@@ -125,11 +125,11 @@ function QuizMyScoreTable(props) {
   const moveToSpecificListeningPage =(n) => {
     if(type== "myscore") {
     
-        history.push('/quiz/my-score/'+n.id);
+        history.push('/smartenglishstudy-website-react/quiz/my-score/'+n.id);
 
     }else {
         
-        history.push('/quiz/student-score/'+n.id);
+        history.push('/smartenglishstudy-website-react/quiz/student-score/'+n.id);
     }
     console.log(n.id);
   }

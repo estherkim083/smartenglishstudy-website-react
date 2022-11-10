@@ -148,7 +148,7 @@ function WritingBorderedTable(props) {
 
   const moveToSpecificPage= (n_id, n) => {
     
-    history.push('/writing/essay/'+id+'/'+n_id+'/'+n.email); ///writing/essay/:id/:userid
+    history.push('/smartenglishstudy-website-react/writing/essay/'+id+'/'+n_id+'/'+n.email); ///writing/essay/:id/:userid
   };
   return (
     <div className={classes.rootTable}>

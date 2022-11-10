@@ -136,7 +136,7 @@ function MyInboxTable(props) {
         .catch(function (error) {
         })
         .then(function (res) { 
-          window.location.href="/my-inbox";
+          window.location.href="/smartenglishstudy-website-react/my-inbox";
         });
   };
   useEffect(() => {

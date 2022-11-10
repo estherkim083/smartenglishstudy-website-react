@@ -125,7 +125,7 @@ function BookWritingCreateEditForm(props) {
           .catch(function (error) {
           })
           .then(function (res) {
-            window.location.href="/writing/book/";
+            window.location.href="/smartenglishstudy-website-react/writing/book/";
           });
     }else {
       var hashVal='';
@@ -157,7 +157,7 @@ function BookWritingCreateEditForm(props) {
           .catch(function (error) {
           })
           .then(function (res) {
-            window.location.href="/writing/book/";
+            window.location.href="/smartenglishstudy-website-react/writing/book/";
           });
     }
 

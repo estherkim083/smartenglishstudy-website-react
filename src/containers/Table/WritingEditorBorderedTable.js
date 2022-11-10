@@ -150,10 +150,10 @@ function WritingEditorBorderedTable(props) {
         .then(res => {
             console.log(res["data"]["is_editor"])
             if(res["data"]["is_editor"]== true) {
-              window.location.href= `/writing/editorpage/${label}/`+n_id;
+              window.location.href= `/smartenglishstudy-website-react/writing/editorpage/${label}/`+n_id;
             }
             else {
-              window.location.href= `/writing/editorpageonlyview/${label}/`+n_id;
+              window.location.href= `/smartenglishstudy-website-react/writing/editorpageonlyview/${label}/`+n_id;
             }
         })
     };
@@ -172,7 +172,7 @@ function WritingEditorBorderedTable(props) {
         .then(res => {
             console.log(res["data"]["is_editor"])
             if(res["data"]["is_editor"]== true) {              
-              window.location.href= `/writing/editorpage/${label}/`+n_id;
+              window.location.href= `/smartenglishstudy-website-react/writing/editorpage/${label}/`+n_id;
             }
         })
         .catch(error => {});
@@ -199,7 +199,7 @@ function WritingEditorBorderedTable(props) {
             })
             .then(function (res) {
                 console.log(res);  
-                window.location.href= '/writing/editor';
+                window.location.href= '/smartenglishstudy-website-react/writing/editor';
             });
     }
     return (

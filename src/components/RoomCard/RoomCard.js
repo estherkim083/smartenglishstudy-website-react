@@ -59,10 +59,10 @@ function RoomCard(props) {
     }
   },[isLoaded]);
   const detailOpen= () => {
-    window.location.href= "/writing/essay/"+id;
+    window.location.href= "/smartenglishstudy-website-react/writing/essay/"+id;
   }
   const detailWritingOpen= () => {
-    window.location.href= "/writing/book/"+id;
+    window.location.href= "/smartenglishstudy-website-react/writing/book/"+id;
   }
   const handleDeleteEssayRoom= () => {
     axios
@@ -80,7 +80,7 @@ function RoomCard(props) {
       })
       .then(function (res) {  
           console.log(res);
-          window.location.href= "/writing/essay/";
+          window.location.href= "/smartenglishstudy-website-react/writing/essay/";
       });
 
   };
@@ -99,7 +99,7 @@ function RoomCard(props) {
         .then(res => {
           if(res["data"]["msg"]== "can access") {
 
-            window.location.href= '/writing/essay/create/' + id;
+            window.location.href= '/smartenglishstudy-website-react/writing/essay/create/' + id;
           }
         })
         .catch(error => {});
@@ -120,7 +120,7 @@ function RoomCard(props) {
       .then(res => {
         if(res["data"]["msg"]== "can access") {
 
-          window.location.href= '/writing/book/create/' + id;
+          window.location.href= '/smartenglishstudy-website-react/writing/book/create/' + id;
         }
       })
       .catch(error => {});
@@ -142,7 +142,7 @@ function RoomCard(props) {
       })
       .then(function (res) {  
           console.log(res);
-          window.location.href= "/writing/book/";
+          window.location.href= "/smartenglishstudy-website-react/writing/book/";
       });
   };
   return (

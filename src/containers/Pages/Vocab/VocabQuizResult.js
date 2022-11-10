@@ -39,7 +39,7 @@ function SolveRoom(props) {
     useEffect(() => {
         var author= localStorage.getItem("user_name");
         if(author === null) {
-            window.location.href="/auth/email";
+            window.location.href="/smartenglishstudy-website-react/auth/email";
         }
         if(localStorage.getItem("MyProfileOnce")) {
             localStorage.removeItem("MyProfileOnce");

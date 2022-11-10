@@ -12,7 +12,7 @@ module.exports = [
       {
         key: '빈칸뚫기연습',
         name: 'Listening',
-        link: '/listening'
+        link: '/smartenglishstudy-website-react/listening'
       },
       {
         key: 'Reading',
@@ -22,13 +22,13 @@ module.exports = [
       {
         key: '리딩자료실',
         name: '리딩자료실',
-        link: '/reading',
+        link: '/smartenglishstudy-website-react/reading',
         icon: 'ion-ios-contact-outline'
       },
       {
         key: '리딩단어장',
         name: '리딩단어장',
-        link: '/reading/vocab'
+        link: '/smartenglishstudy-website-react/reading/vocab'
       },
       {
         key: 'Writing',
@@ -38,17 +38,17 @@ module.exports = [
       {
         key: 'Essay Writing',
         name: 'Essay Writing',
-        link: '/writing/essay',
+        link: '/smartenglishstudy-website-react/writing/essay',
       },
       {
         key: 'Book Writing',
         name: 'Book Writing',
-        link: '/writing/book',
+        link: '/smartenglishstudy-website-react/writing/book',
       },
       {
         key: '첨삭자료실',
         name: '첨삭자료실',
-        link: '/writing/editor',
+        link: '/smartenglishstudy-website-react/writing/editor',
       }
     ]
   },
@@ -65,12 +65,12 @@ module.exports = [
       {
         key: '출제하기',
         name: '출제하기',
-        link: '/quiz/make-quiz',
+        link: '/smartenglishstudy-website-react/quiz/make-quiz',
       },
       {
         key: '성적',
         name: '성적',
-        link: '/quiz/student-score',
+        link: '/smartenglishstudy-website-react/quiz/student-score',
       },
       {
         key: '문제풀이실',
@@ -80,12 +80,12 @@ module.exports = [
       {
         key: '문제풀이실',
         name: '문제풀이실',
-        link: '/quiz/take-quiz',
+        link: '/smartenglishstudy-website-react/quiz/take-quiz',
       },
       {
         key: '나의성적',
         name: '나의 성적',
-        link: '/quiz/my-score',
+        link: '/smartenglishstudy-website-react/quiz/my-score',
       },
     ]
   },
@@ -102,7 +102,7 @@ module.exports = [
       {
         key: '단어장만들기',
         name: '단어장 만들기',
-        link: '/vocab',
+        link: '/smartenglishstudy-website-react/vocab',
       },
       {
         key: '어휘퀴즈',
@@ -112,7 +112,7 @@ module.exports = [
       {
         key: '암기용퀴즈',
         name: '암기용 퀴즈',
-        link: '/vocab/quiz-memorization',
+        link: '/smartenglishstudy-website-react/vocab/quiz-memorization',
       }
     ]
   },
@@ -129,12 +129,12 @@ module.exports = [
       {
         key: '프로필조회',
         name: '프로필 조회',
-        link: '/profile-peer-list',
+        link: '/smartenglishstudy-website-react/profile-peer-list',
       },
       {
         key: '친구/그롭조회',
         name: '친구/그룹 조회',
-        link: '/my-peer-list',
+        link: '/smartenglishstudy-website-react/my-peer-list',
       },
       {
         key: '메세지',
@@ -144,7 +144,7 @@ module.exports = [
       {
         key: 'Chat',
         name: 'Chat',
-        link: '/chat',
+        link: '/smartenglishstudy-website-react/chat',
       },
       {
         key: '내프로필',
@@ -154,12 +154,12 @@ module.exports = [
       {
         key: 'MyProfile',
         name: 'MyProfile',
-        link: '/my-profile',
+        link: '/smartenglishstudy-website-react/my-profile',
       },
       {
         key: 'MyInbox',
         name: 'MyInbox',
-        link: '/my-inbox',
+        link: '/smartenglishstudy-website-react/my-inbox',
       },
     ]
   },
@@ -176,7 +176,7 @@ module.exports = [
       {
         key: '기능소개',
         name: '기능소개',
-        link: '/home',
+        link: '/smartenglishstudy-website-react/home',
       },
     ]
   },

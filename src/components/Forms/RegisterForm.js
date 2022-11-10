@@ -83,7 +83,7 @@ function RegisterForm(props) {
           localStorage.setItem("user_name", res.data.user_name);
           localStorage.setItem("email", res.data.email);
           localStorage.setItem("token", res.data.token);
-          window.location.href='/';
+          window.location.href='/smartenglishstudy-website-react';
         
     })
     .catch(error => {
@@ -150,7 +150,7 @@ function RegisterForm(props) {
             localStorage.setItem("user_name", data.kakao_account.profile.nickname);
             localStorage.setItem("email", data.kakao_account.email);
             localStorage.setItem("token", token);
-            window.location.href='/';
+            window.location.href='/smartenglishstudy-website-react';
           })
           .catch(error => {
             setToast("error");
@@ -205,7 +205,7 @@ function RegisterForm(props) {
               localStorage.setItem("user_name", userInfo.data.name);
               localStorage.setItem("email", userInfo.data.email);
               localStorage.setItem("token", token);
-              window.location.href='/';
+              window.location.href='/smartenglishstudy-website-react';
               }, 1000);
             
           })
@@ -350,7 +350,7 @@ function RegisterForm(props) {
           <img src={logo} alt={brand.name} />
           {brand.name}
         </NavLink>
-        <Button size="small" className={classes.buttonLink} component={LinkBtn} to="/auth/email">
+        <Button size="small" className={classes.buttonLink} component={LinkBtn} to="/smartenglishstudy-website-react/auth/email">
           <VpnKeyIcon/>
           &nbsp;
           Already have account ?

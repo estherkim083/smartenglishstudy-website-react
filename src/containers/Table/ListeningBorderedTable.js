@@ -129,7 +129,7 @@ function BorderedTable(props) {
   const moveToSpecificListeningPage =(n) => {
     console.log(n.id);
     
-    history.push('/listening/listening-view-scripts/'+n.id);
+    history.push('/smartenglishstudy-website-react/listening/listening-view-scripts/'+n.id);
   }
 
   useEffect(() => {
@@ -186,7 +186,7 @@ function BorderedTable(props) {
           })
           .then(function (res) {
               console.log(res);  
-              window.location.href= '/listening';
+              window.location.href= '/smartenglishstudy-website-react/listening';
           });
   }
   return (

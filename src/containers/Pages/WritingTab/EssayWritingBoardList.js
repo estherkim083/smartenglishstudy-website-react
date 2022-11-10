@@ -21,14 +21,14 @@ function EssayWritingBoardList(props) {
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
 
     const handleWritingFab= ()=> {
-        window.location.href= '/writing/essay/create/';
+        window.location.href= '/smartenglishstudy-website-react/writing/essay/create/';
     };
 
 
     useEffect(() => {
         var author= localStorage.getItem("user_name");
         if(author === null) {
-            window.location.href="/auth/email";
+            window.location.href="/smartenglishstudy-website-react/auth/email";
         }
         if(localStorage.getItem("MyProfileOnce")) {
             localStorage.removeItem("MyProfileOnce");

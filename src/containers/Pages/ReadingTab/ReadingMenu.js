@@ -9,12 +9,12 @@ import useWindowDimensions from '../../../useWindowDimensions';
 function ReadingMenu(props) {
     const { height, width } = useWindowDimensions();
     const handleReadingFab= () => {
-        window.location.href='/reading/create/';
+        window.location.href='/smartenglishstudy-website-react/reading/create/';
     };
     useEffect(() => {
         var author= localStorage.getItem("user_name");
         if(author === null) {
-            window.location.href="/auth/email";
+            window.location.href="/smartenglishstudy-website-react/auth/email";
         }
         if(localStorage.getItem("MyProfileOnce")) {
             localStorage.removeItem("MyProfileOnce");

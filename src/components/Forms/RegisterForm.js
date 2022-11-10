@@ -258,11 +258,11 @@ function RegisterForm(props) {
 	};
 
   const handleKakaoRegister =() => {
-    self.location= KAKAO_AUTH_URL;
+    window.location= KAKAO_AUTH_URL;
     //window.location.href= KAKAO_AUTH_URL;
   };
   const handleNaverRegister= ()=> {
-    self.location= `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=4N4hr24Can8FuT0yjggz&redirect_uri=https://estherkim083.github.io/smartenglishstudy-website-react/auth/register/naver&state=sdfkjashftreer`;
+    window.location= `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=4N4hr24Can8FuT0yjggz&redirect_uri=https://estherkim083.github.io/smartenglishstudy-website-react/auth/register/naver&state=sdfkjashftreer`;
     //window.location.href=`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=4N4hr24Can8FuT0yjggz&redirect_uri=https://estherkim083.github.io/smartenglishstudy-website-react/auth/register/naver&state=sdfkjashftreer`;
     
   };

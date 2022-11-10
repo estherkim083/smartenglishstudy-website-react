@@ -223,10 +223,10 @@ function LoginForm(props) {
   const KAKAO_AUTH_URL= `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=https://estherkim083.github.io/smartenglishstudy-website-react/auth/kakao&response_type=code`;
   
   const handleKakaoLogin =() => {
-    self.location= KAKAO_AUTH_URL;
+    window.location= KAKAO_AUTH_URL;
   };
   const handleNaverLogin= ()=> {
-    self.location=`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=4N4hr24Can8FuT0yjggz&redirect_uri=https://estherkim083.github.io/smartenglishstudy-website-react/auth/naver&state=sdfkjashftreer`;
+    window.location=`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=4N4hr24Can8FuT0yjggz&redirect_uri=https://estherkim083.github.io/smartenglishstudy-website-react/auth/naver&state=sdfkjashftreer`;
   };
 
   // 카카오 로그인 버튼 스타일링  

@@ -18,6 +18,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios';
 import workshop from '../../images/workshop.jpg';
+import { useHistory } from "react-router-dom";
 
 function RoomCard(props) {
   const {
@@ -59,6 +60,7 @@ function RoomCard(props) {
     }
   },[isLoaded]);
   const detailOpen= () => {
+    
     window.location.href= "/smartenglishstudy-website-react/writing/essay/"+id;
   }
   const detailWritingOpen= () => {

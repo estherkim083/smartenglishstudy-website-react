@@ -224,7 +224,7 @@ function BorderedTable(props) {
               <TableCell align="right" className={classes.cellRegularStyle}>
                   <Link
                     color="textPrimary"
-                    href={'/listening/listening-create-scripts/' + n.id}
+                    href={'/smartenglishstudy-website-react/listening/listening-create-scripts/' + n.id}
                     className={classes.link}
                   >
                     <EditIcon></EditIcon>

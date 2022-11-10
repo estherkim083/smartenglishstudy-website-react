@@ -31,7 +31,7 @@ function DropMenuLayout(props) {
         toggleDrawerOpen={toggleDrawer}
         openMobileNav={sidebarOpen}
         loadTransition={loadTransition}
-        logoLink="/"
+        logoLink="/smartenglishstudy-website-react"
       />
       <main
         className={

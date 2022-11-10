@@ -15,6 +15,7 @@ import { storage } from '../../firebase';
 import { ref, getDownloadURL } from "firebase/storage";
 import DeleteIcon from '@material-ui/icons/Delete';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { useHistory } from "react-router-dom";
 import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios';
 
@@ -34,6 +35,7 @@ function QuizRoomCard(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [ thumbnail, setThumbnail]= useState(null);
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
+    const history = useHistory();	
 
     useEffect(()=> {
         setIsLoaded(true);
@@ -47,10 +49,12 @@ function QuizRoomCard(props) {
             });
     },[isLoaded]);
     const detailOpen= () => {
-        window.location.href= "/smartenglishstudy-website-react/quiz/make-quiz/"+id;
+        history.push("/smartenglishstudy-website-react/quiz/make-quiz/"+id);
     }
     const detailOpen2= ()=> {
-      window.location.href= "/smartenglishstudy-website-react/quiz/take-quiz/"+id;
+      
+      history.push("/smartenglishstudy-website-react/quiz/take-quiz/"+id);
+      //window.location.href= "/smartenglishstudy-website-react/quiz/take-quiz/"+id;
     };
     const handleDeleteQuizRoom= () => {
         axios
@@ -68,7 +72,8 @@ function QuizRoomCard(props) {
           })
           .then(function (res) {  
               console.log(res);
-              window.location.href= "/smartenglishstudy-website-react/quiz/make-quiz/";
+              history.push("/smartenglishstudy-website-react/quiz/make-quiz/");
+             // window.location.href= "/smartenglishstudy-website-react/quiz/make-quiz/";
           });
 
     };

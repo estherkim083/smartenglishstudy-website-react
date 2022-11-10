@@ -25,7 +25,7 @@ function Application(props) {
         <Route exact path='/smartenglishstudy-website-react/my-profile' component={MyProfile}/>
         <Route exact path='/smartenglishstudy-website-react/my-inbox' component={MyInbox}/>
         <Route exact path='/smartenglishstudy-website-react/profile-peer-list' component={ProfileList}/>
-        <Route exact path='/my-peer-list' component={ProfilePeerList}/>
+        <Route exact path='/smartenglishstudy-website-react/my-peer-list' component={ProfilePeerList}/>
         <Route exact path='/smartenglishstudy-website-react/chat' component={ChatMessage}/> 
         <Route exact path='/smartenglishstudy-website-react/writing/essay' component={EssayWritingBoardList}/>
         <Route exact path='/smartenglishstudy-website-react/writing/essay/create/:id?' component={EssayRoomCreate}/>

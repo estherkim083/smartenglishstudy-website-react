@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form/immutable';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
@@ -48,6 +48,7 @@ function LoginForm(props) {
   let { type } = useParams();
   const [toast, setToast]= useState(null);
   const [toastMessage, setToastMessage]= useState(null);
+  const history = useHistory();	
   
   const [notifState, setNotif] = useState({
     open: false,
@@ -83,7 +84,8 @@ function LoginForm(props) {
             localStorage.setItem("user_name", userInfo.data.name);
             localStorage.setItem("email", userInfo.data.email);
             localStorage.setItem("token", token);
-            window.location.href='/smartenglishstudy-website-react';
+            history.push('/smartenglishstudy-website-react');
+            // window.location.href='/smartenglishstudy-website-react';
           })
         .catch(error => {
           
@@ -134,7 +136,8 @@ function LoginForm(props) {
           localStorage.setItem("user_name", res.data.user_name);
           localStorage.setItem("email", res.data.email);
           localStorage.setItem("token", res.data.token);
-          window.location.href='/smartenglishstudy-website-react';
+          history.push('/smartenglishstudy-website-react');
+          // window.location.href='/smartenglishstudy-website-react';
         
     })
     .catch(error => {
@@ -196,7 +199,8 @@ function LoginForm(props) {
             localStorage.setItem("user_name", data.kakao_account.profile.nickname);
             localStorage.setItem("email", data.kakao_account.email);
             localStorage.setItem("token", token);
-            window.location.href='/smartenglishstudy-website-react';
+            history.push('/smartenglishstudy-website-react');
+            //window.location.href='/smartenglishstudy-website-react';
           })
         .catch(error => {
           
@@ -324,7 +328,7 @@ function LoginForm(props) {
   return (
     <Paper className={classNames(classes.fullWrap, classes.petal)}>
       <div className={classes.topBar}>
-        <NavLink to="/" className={classes.brand}>
+        <NavLink to="/smartenglishstudy-website-react" className={classes.brand}>
           <img src={logo} alt={brand.name} />
           {brand.name}
         </NavLink>

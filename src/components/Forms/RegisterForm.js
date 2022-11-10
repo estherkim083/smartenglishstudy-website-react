@@ -27,7 +27,7 @@ import GoogleIconImage from '../../images/btn_google_light_normal_ios_2x.png';
 import NaverIconImage from '../../images/naver_logo.png';
 import styled from 'styled-components';
 import { Map } from 'immutable';
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import Snackbar from '@material-ui/core/Snackbar';
 
 
@@ -52,11 +52,11 @@ const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disabl
 
 function RegisterForm(props) {
   const [tab, setTab] = useState(0);
-  const history = useHistory();
   let { type } = useParams();
   const [fetchedOnce, setFetchedOnce] = useState(false);
   const location= useLocation();
   const CODE= location.search.split('=')[1];
+  const history = useHistory();	
   
   const [notifState, setNotif] = useState({
     open: false,
@@ -83,7 +83,8 @@ function RegisterForm(props) {
           localStorage.setItem("user_name", res.data.user_name);
           localStorage.setItem("email", res.data.email);
           localStorage.setItem("token", res.data.token);
-          window.location.href='/smartenglishstudy-website-react';
+          history.push('/smartenglishstudy-website-react');
+          //window.location.href='/smartenglishstudy-website-react';
         
     })
     .catch(error => {
@@ -150,7 +151,9 @@ function RegisterForm(props) {
             localStorage.setItem("user_name", data.kakao_account.profile.nickname);
             localStorage.setItem("email", data.kakao_account.email);
             localStorage.setItem("token", token);
-            window.location.href='/smartenglishstudy-website-react';
+            
+            history.push('/smartenglishstudy-website-react');
+            //window.location.href='/smartenglishstudy-website-react';
           })
           .catch(error => {
             setToast("error");
@@ -205,7 +208,8 @@ function RegisterForm(props) {
               localStorage.setItem("user_name", userInfo.data.name);
               localStorage.setItem("email", userInfo.data.email);
               localStorage.setItem("token", token);
-              window.location.href='/smartenglishstudy-website-react';
+              history.push('/smartenglishstudy-website-react');
+              //window.location.href='/smartenglishstudy-website-react';
               }, 1000);
             
           })

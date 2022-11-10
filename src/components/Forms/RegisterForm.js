@@ -27,7 +27,7 @@ import GoogleIconImage from '../../images/btn_google_light_normal_ios_2x.png';
 import NaverIconImage from '../../images/naver_logo.png';
 import styled from 'styled-components';
 import { Map } from 'immutable';
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Snackbar from '@material-ui/core/Snackbar';
 
 

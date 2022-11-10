@@ -158,7 +158,7 @@ function LoginForm(props) {
     fetch(`https://kauth.kakao.com/oauth/token`, {
       method: 'POST',
       headers :{ 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `grant_type=authorization_code&client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=http://localhost:3000/auth/kakao&code=${CODE}`,
+      body: `grant_type=authorization_code&client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=https://estherkim083.github.io/smartenglishstudy-website-react/auth/kakao&code=${CODE}`,
     })
       .then(res=> res.json())
       .then(data => {
@@ -216,13 +216,13 @@ function LoginForm(props) {
     });
 
   }
-  const KAKAO_AUTH_URL= `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=http://localhost:3000/auth/kakao&response_type=code`;
+  const KAKAO_AUTH_URL= `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=https://estherkim083.github.io/smartenglishstudy-website-react/auth/kakao&response_type=code`;
   
   const handleKakaoLogin =() => {
     window.location.href= KAKAO_AUTH_URL;
   };
   const handleNaverLogin= ()=> {
-    window.location.href=`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=4N4hr24Can8FuT0yjggz&redirect_uri=http://localhost:3000/auth/naver&state=sdfkjashftreer`;
+    window.location.href=`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=4N4hr24Can8FuT0yjggz&redirect_uri=https://estherkim083.github.io/smartenglishstudy-website-react/auth/naver&state=sdfkjashftreer`;
   };
 
   // 카카오 로그인 버튼 스타일링  

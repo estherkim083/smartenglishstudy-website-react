@@ -126,7 +126,6 @@ function LoginForm(props) {
   
 	const [formData, updateFormData] = useState(initialFormData);
   const location= useLocation();
-  const CODE= location.search.split('=')[1];
   const NaverLogin = ()=> {
     var token= location.search.split('=')[1];
     token= token.split('&')[0];
@@ -157,11 +156,13 @@ function LoginForm(props) {
     });
 
   };
+  const CODE= location.search.split('=')[1];
   const KakaoLogin= () => {
     fetch(`https://kauth.kakao.com/oauth/token`, {
       method: 'POST',
       headers :{ 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `grant_type=authorization_code&client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=https://estherkim083.github.io/smartenglishstudy-website-react/auth/kakao&code=${CODE}`,
+      //body: `grant_type=authorization_code&client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=https://estherkim083.github.io/smartenglishstudy-website-react/auth/kakao&code=${CODE}`,
+      body: `grant_type=authorization_code&client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&code=${CODE}`,
     })
       .then(res=> res.json())
       .then(data => {
@@ -223,10 +224,10 @@ function LoginForm(props) {
   const KAKAO_AUTH_URL= `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=https://estherkim083.github.io/smartenglishstudy-website-react/auth/kakao&response_type=code`;
   
   const handleKakaoLogin =() => {
-    window.location= KAKAO_AUTH_URL;
+    location.href= KAKAO_AUTH_URL;
   };
   const handleNaverLogin= ()=> {
-    window.location=`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=4N4hr24Can8FuT0yjggz&redirect_uri=https://estherkim083.github.io/smartenglishstudy-website-react/auth/naver&state=sdfkjashftreer`;
+    location.href='https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=4N4hr24Can8FuT0yjggz&redirect_uri=https://estherkim083.github.io/smartenglishstudy-website-react/auth/naver&state=sdfkjashftreer';
   };
 
   // 카카오 로그인 버튼 스타일링  
@@ -295,14 +296,26 @@ function LoginForm(props) {
   useEffect(() => {
     if(type=="kakao") {
       if(location.search) {
-        KakaoLogin();
+        if(location.search.split("&")[1] && location.search.split("&")[1]== "history=1") {
+          KakaoLogin();
+
+        }else{
+          const CODE= location.search.split('=')[1];
+          history.push(`/smartenglishstudy-website-react/auth/kakao?code=${CODE}&history=1`);
+        }
       }
       else {
         console.log('no kakao code');
       }
     }else if(type=="naver") {
-      if(location.search) {
-        NaverLogin();
+      if(location.search) { 
+        if(location.search.split("&")[1] && location.search.split("&")[1]== "history=1") {
+          NaverLogin();
+
+        }else{
+          const CODE= location.search.split('=')[1];
+          history.push(`/smartenglishstudy-website-react/auth/naver?code=${CODE}&history=1`);
+        }
       }
       else {
         console.log('no kakao code');

@@ -1,12 +1,16 @@
 import React, {useEffect} from 'react';
 import PapperBlock from '../../../components/PapperBlock/PapperBlock';
 import BorderedTable from '../../Table/ListeningBorderedTable';
+import { useHistory } from "react-router-dom";
+
 
 function ListeningMenu(props) {
+    let history= useHistory();
     useEffect(() => {
         var author= localStorage.getItem("user_name");
         if(author === null) {
-            window.location.href="/smartenglishstudy-website-react/auth/email";
+            history.push("/smartenglishstudy-website-react/auth/email");
+            //window.location.href="/smartenglishstudy-website-react/auth/email";
         }
         if(localStorage.getItem("MyProfileOnce")) {
             localStorage.removeItem("MyProfileOnce");

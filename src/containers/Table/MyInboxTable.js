@@ -136,7 +136,7 @@ function MyInboxTable(props) {
         .catch(function (error) {
         })
         .then(function (res) { 
-          window.location.href="/smartenglishstudy-website-react/my-inbox";
+          window.location.href="/my-inbox";
         });
   };
   useEffect(() => {
@@ -197,7 +197,7 @@ function MyInboxTable(props) {
                   <Link
                     color="textPrimary"
                     className={classes.link}
-                    href={'/smartenglishstudy-website-react/reading/create/' + n.id+'/myinbox'}
+                    href={'/reading/create/' + n.id+'/myinbox'}
                   >
                     <EditIcon></EditIcon>
                   </Link>

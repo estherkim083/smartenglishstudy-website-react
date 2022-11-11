@@ -79,10 +79,10 @@ function Register(props) {
   };
 
   if (redirect) {
-    return <Redirect push to="/smartenglishstudy-website-react" />;
+    return <Redirect push to="/" />;
   }
   else if(session_token !== null) {
-    return <Redirect push to="/smartenglishstudy-website-react"/>
+    return <Redirect push to="/"/>
   }
   else {
     return (

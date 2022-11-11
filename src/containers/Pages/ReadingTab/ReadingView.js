@@ -180,7 +180,7 @@ function ReadingView(props) {
             }
             })
             .then(function (res) {  
-                window.location.href= '/smartenglishstudy-website-react/reading/view/'+id;
+                window.location.href= '/reading/view/'+id;
             });
     };
 
@@ -238,7 +238,7 @@ function ReadingView(props) {
             }
             })
             .then(function (res) {  
-                window.location.href= '/smartenglishstudy-website-react/reading/view/'+id;
+                window.location.href= '/reading/view/'+id;
             });
 
     };

@@ -109,7 +109,7 @@ function ListeningEditForm(props) {
           .then(function (res) {
               console.log(res);
   
-              window.location.href= '/smartenglishstudy-website-react/listening';
+              window.location.href= '/listening';
           });
 
       }
@@ -140,7 +140,7 @@ function ListeningEditForm(props) {
           .then(function (res) {
               console.log(res);
 
-              window.location.href= '/smartenglishstudy-website-react/listening';
+              window.location.href= '/listening';
           });
       }
     }

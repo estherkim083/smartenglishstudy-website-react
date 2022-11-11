@@ -121,7 +121,7 @@ function EssayWritingCreateEditForm(props) {
           .catch(function (error) {
           })
           .then(function (res) {
-            window.location.href="/smartenglishstudy-website-react/writing/essay/";
+            window.location.href="/writing/essay/";
           });
     }else {
       var hashVal='';
@@ -152,7 +152,7 @@ function EssayWritingCreateEditForm(props) {
           .catch(function (error) {
           })
           .then(function (res) {
-            window.location.href="/smartenglishstudy-website-react/writing/essay/";
+            window.location.href="/writing/essay/";
           });
     }
 

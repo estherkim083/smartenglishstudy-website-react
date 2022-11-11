@@ -103,14 +103,14 @@ function UserMenu(props) {
         </MenuItem>
         <Divider />
         {login ? (
-          <MenuItem onClick={logoutSubmit} component={Link} to="/smartenglishstudy-website-react" style={{fontFamily:"CookieRun-Regular"}}>
+          <MenuItem onClick={logoutSubmit} component={Link} to="/" style={{fontFamily:"CookieRun-Regular"}}>
             <ListItemIcon>
               <ExitToApp />
             </ListItemIcon>
             Log Out
           </MenuItem>
         ) : (          
-          <MenuItem component={Link} to="/smartenglishstudy-website-react/auth/email" style={{fontFamily:"CookieRun-Regular"}}>
+          <MenuItem component={Link} to="/auth/email" style={{fontFamily:"CookieRun-Regular"}}>
             <ListItemIcon>
               <AccountCircle />
             </ListItemIcon>

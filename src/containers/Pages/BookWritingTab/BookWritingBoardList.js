@@ -21,14 +21,14 @@ function BookWritingBoardList(props) {
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
 
     const handleWritingFab= ()=> {
-        window.location.href= '/smartenglishstudy-website-react/writing/book/create/';
+        window.location.href= '/writing/book/create/';
     };
 
 
     useEffect(() => {
         var author= localStorage.getItem("user_name");
         if(author === null) {
-            window.location.href="/smartenglishstudy-website-react/auth/email";
+            window.location.href="/auth/email";
         }
         if(localStorage.getItem("MyProfileOnce")) {
             localStorage.removeItem("MyProfileOnce");

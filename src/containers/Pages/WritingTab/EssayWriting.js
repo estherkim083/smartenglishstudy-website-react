@@ -84,7 +84,7 @@ function EssayWriting(props) {
     useEffect(() => {
         var author= localStorage.getItem("user_name");
         if(author === null) {
-            window.location.href="/smartenglishstudy-website-react/auth/email";
+            window.location.href="/auth/email";
         }
         if(localStorage.getItem("MyProfileOnce")) {
             localStorage.removeItem("MyProfileOnce");
@@ -255,7 +255,7 @@ function EssayWriting(props) {
             .catch(function (error) {
             })
             .then(function (res) {
-                window.location.href='/smartenglishstudy-website-react/writing/editor';
+                window.location.href='/writing/editor';
             });
     };
     const handleChangeForm = (index, friend) => event => {

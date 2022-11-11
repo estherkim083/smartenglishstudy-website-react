@@ -30,10 +30,10 @@ export default function App() {
       <ThemeWrapper>
           <Router>
             <Switch>
-              <Route exact path="/smartenglishstudy-website-react/auth/:type">
+              <Route exact path="/auth/:type">
                 <Login />
               </Route>
-              <Route exact path="/smartenglishstudy-website-react/auth/register/:type">
+              <Route exact path="/auth/register/:type">
                 <Register />
               </Route>
               <Route path="/">

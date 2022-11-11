@@ -36,7 +36,7 @@ function SolveRoom(props) {
     useEffect(() => {
         var author= localStorage.getItem("user_name");
         if(author === null) {
-            window.location.href="/smartenglishstudy-website-react/auth/email";
+            window.location.href="/auth/email";
         }
         if(localStorage.getItem("MyProfileOnce")) {
             localStorage.removeItem("MyProfileOnce");
@@ -51,10 +51,10 @@ function SolveRoom(props) {
         }
     },[isLoaded]);
     const handleMoveToQuizSolveRoomView= () => {
-        window.location.href= '/smartenglishstudy-website-react/vocab/quiz-memorization/take-quiz';
+        window.location.href= '/vocab/quiz-memorization/take-quiz';
     };
     const handleMoveToQuizSolveRoomResultView= ()=> {
-        window.location.href= '/smartenglishstudy-website-react/vocab/quiz-memorization/result';
+        window.location.href= '/vocab/quiz-memorization/result';
         
     };
     return (

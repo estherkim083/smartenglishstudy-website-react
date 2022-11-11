@@ -49,11 +49,11 @@ function QuizRoomCard(props) {
             });
     },[isLoaded]);
     const detailOpen= () => {
-        history.push("/smartenglishstudy-website-react/quiz/make-quiz/"+id);
+        history.push("/quiz/make-quiz/"+id);
     }
     const detailOpen2= ()=> {
       
-      history.push("/smartenglishstudy-website-react/quiz/take-quiz/"+id);
+      history.push("/quiz/take-quiz/"+id);
       //window.location.href= "/smartenglishstudy-website-react/quiz/take-quiz/"+id;
     };
     const handleDeleteQuizRoom= () => {
@@ -72,7 +72,7 @@ function QuizRoomCard(props) {
           })
           .then(function (res) {  
               console.log(res);
-              history.push("/smartenglishstudy-website-react/quiz/make-quiz/");
+              history.push("/quiz/make-quiz/");
              // window.location.href= "/smartenglishstudy-website-react/quiz/make-quiz/";
           });
 

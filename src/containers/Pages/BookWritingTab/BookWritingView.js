@@ -57,7 +57,7 @@ function BookWritingView(props) {
             })
             .then(function (res) {  
                 console.log(res);
-                window.location.href="/smartenglishstudy-website-react/writing/book/"+id;
+                window.location.href="/writing/book/"+id;
             });
     };
     const handleUnJoinButton= () => {
@@ -76,13 +76,13 @@ function BookWritingView(props) {
             })
             .then(function (res) {  
                 console.log(res);
-                window.location.href="/smartenglishstudy-website-react/writing/book/"+id;
+                window.location.href="/writing/book/"+id;
             });
     };
     useEffect(() => {
         var author= localStorage.getItem("user_name");
         if(author === null) {
-            window.location.href="/smartenglishstudy-website-react/auth/";
+            window.location.href="/auth/";
         }
         if(localStorage.getItem("MyProfileOnce")) {
             localStorage.removeItem("MyProfileOnce");

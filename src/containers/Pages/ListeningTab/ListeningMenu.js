@@ -9,7 +9,7 @@ function ListeningMenu(props) {
     useEffect(() => {
         var author= localStorage.getItem("user_name");
         if(author === null) {
-            history.push("/smartenglishstudy-website-react/auth/email");
+            history.push("/auth/email");
             //window.location.href="/smartenglishstudy-website-react/auth/email";
         }
         if(localStorage.getItem("MyProfileOnce")) {

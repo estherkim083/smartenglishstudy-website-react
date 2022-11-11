@@ -143,7 +143,7 @@ function ListeningMenu(props) {
     
     // 나가기 버튼 눌렀을 때, 다시 리스닝 게시판 화면으로 돌아가기.
     const handleReset = () => {
-        window.location.href= "/smartenglishstudy-website-react/listening";
+        window.location.href= "/listening";
     };
 
     const handleblankTextValue = (e) => {

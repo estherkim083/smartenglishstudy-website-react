@@ -33,12 +33,12 @@ function Quiz(props) {
     const { height, width } = useWindowDimensions();
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
     const handleCreateQuizRoom= () => {
-        window.location.href="/smartenglishstudy-website-react/quiz/make-quiz/create/";
+        window.location.href="/quiz/make-quiz/create/";
     };
     useEffect(() => {
         var author= localStorage.getItem("user_name");
         if(author === null) {
-            window.location.href="/smartenglishstudy-website-react/auth/email";
+            window.location.href="/auth/email";
         }
         if(localStorage.getItem("MyProfileOnce")) {
             localStorage.removeItem("MyProfileOnce");

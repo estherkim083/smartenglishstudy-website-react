@@ -48,7 +48,7 @@ function FloatingButtons(props) {
   const { classes, theme } = props;
   const handleListeningBtnOnClick= () => {
     console.log('clicked');
-    window.location.href='/smartenglishstudy-website-react/listening/listening-create-scripts/';
+    window.location.href='/listening/listening-create-scripts/';
   };
   return (
     <Fab color="primary" aria-label="add" className={classes.button} onClick={handleListeningBtnOnClick} >

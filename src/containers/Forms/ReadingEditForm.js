@@ -85,7 +85,7 @@ function ReadingEditForm(props) {
             .catch(function (error) {
             })
             .then(function (res) {
-              window.location.href="/smartenglishstudy-website-react/my-inbox";
+              window.location.href="/my-inbox";
             });
       }
       else if(id!= null || id!== undefined) { // 내용을 편집하는 경우.
@@ -112,7 +112,7 @@ function ReadingEditForm(props) {
             }
           })
           .then(function (res) {  
-               window.location.href= '/smartenglishstudy-website-react/reading';
+               window.location.href= '/reading';
           });
 
       }
@@ -141,7 +141,7 @@ function ReadingEditForm(props) {
             }
           })
           .then(function (res) {
-            window.location.href="/smartenglishstudy-website-react/reading";
+            window.location.href="/reading";
           });
       }
     }

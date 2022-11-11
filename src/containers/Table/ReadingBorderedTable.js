@@ -129,7 +129,7 @@ function BorderedTable(props) {
   const moveToSpecificListeningPage =(n) => {
     console.log(n.id);
     
-    history.push('/smartenglishstudy-website-react/reading/view/'+n.id);
+    history.push('/reading/view/'+n.id);
   }
 
   useEffect(() => {
@@ -186,7 +186,7 @@ function BorderedTable(props) {
           })
           .then(function (res) {
               console.log(res);  
-              window.location.href= '/smartenglishstudy-website-react/reading';
+              window.location.href= '/reading';
           });
   }
   return (
@@ -221,7 +221,7 @@ function BorderedTable(props) {
               <TableCell align="right" className={classes.cellRegularStyle}>
                   <Link
                     color="textPrimary"
-                    href={'/smartenglishstudy-website-react/reading/create/' + n.id}
+                    href={'/reading/create/' + n.id}
                     className={classes.link}
                   >
                     <EditIcon></EditIcon>

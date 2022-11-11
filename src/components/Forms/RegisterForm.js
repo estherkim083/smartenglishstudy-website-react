@@ -82,7 +82,7 @@ function RegisterForm(props) {
           localStorage.setItem("user_name", res.data.user_name);
           localStorage.setItem("email", res.data.email);
           localStorage.setItem("token", res.data.token);
-          history.push('/smartenglishstudy-website-react');
+          history.push('/');
           //window.location.href='/smartenglishstudy-website-react';
         
     })
@@ -112,7 +112,7 @@ function RegisterForm(props) {
     fetch(`https://kauth.kakao.com/oauth/token`, {
       method: 'POST',
       headers :{ 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `grant_type=authorization_code&client_id=7082e8be221b20c3b85fe91ea7334d26&redirect_uri=http://localhost:3000/smartenglishstudy-website-react/auth/register/kakao&code=${CODE}`,
+      body: `grant_type=authorization_code&client_id=7082e8be221b20c3b85fe91ea7334d26&redirect_uri=https://smartenglishstudy-68bfc.web.app/auth/register/kakao&code=${CODE}`,
     })
       .then(res=> res.json())
       .then(data => {
@@ -152,7 +152,7 @@ function RegisterForm(props) {
             localStorage.setItem("email", data.kakao_account.email);
             localStorage.setItem("token", token);
             
-            history.push('/smartenglishstudy-website-react');
+            history.push('/');
             //window.location.href='/smartenglishstudy-website-react';
           })
           .catch(error => {
@@ -208,7 +208,7 @@ function RegisterForm(props) {
               localStorage.setItem("user_name", userInfo.data.name);
               localStorage.setItem("email", userInfo.data.email);
               localStorage.setItem("token", token);
-              history.push('/smartenglishstudy-website-react');
+              history.push('/');
               //window.location.href='/smartenglishstudy-website-react';
               }, 1000);
             
@@ -246,7 +246,7 @@ function RegisterForm(props) {
   
 	const [formData, updateFormData] = useState(initialFormData);
 
-  const KAKAO_AUTH_URL= `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=http://localhost:3000/smartenglishstudy-website-react/auth/register/kakao&response_type=code`;
+  const KAKAO_AUTH_URL= `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=https://smartenglishstudy-68bfc.web.app/auth/register/kakao&response_type=code`;
 
 
 	const handleChange = (e) => {
@@ -262,7 +262,7 @@ function RegisterForm(props) {
     //window.location.href= KAKAO_AUTH_URL;
   };
   const handleNaverRegister= ()=> {
-    window.location.href= `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=4N4hr24Can8FuT0yjggz&redirect_uri=http://localhost:3000/smartenglishstudy-website-react/auth/register/naver&state=sdfkjashftreer`;
+    window.location.href= `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=4N4hr24Can8FuT0yjggz&redirect_uri=https://smartenglishstudy-68bfc.web.app/auth/register/naver&state=sdfkjashftreer`;
     //window.location.href=`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=4N4hr24Can8FuT0yjggz&redirect_uri=https://estherkim083.github.io/smartenglishstudy-website-react/auth/register/naver&state=sdfkjashftreer`;
     
   };
@@ -356,7 +356,7 @@ function RegisterForm(props) {
           <img src={logo} alt={brand.name} />
           {brand.name}
         </NavLink>
-        <Button size="small" className={classes.buttonLink} component={LinkBtn} to="/smartenglishstudy-website-react/auth/email">
+        <Button size="small" className={classes.buttonLink} component={LinkBtn} to="/auth/email">
           <VpnKeyIcon/>
           &nbsp;
           Already have account ?

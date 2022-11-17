@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "smartenglishstudy-68bfc"
-  }
+    "default": "smartenglish-study-learn"
+  },
+  "targets": {},
+  "etags": {}
 }

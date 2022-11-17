@@ -109,7 +109,10 @@ function VocabView(props) {
     const setSpecValue= (e, index, type) => {
         console.log(e.currentTarget.textContent);
         var val= e.currentTarget.textContent;
-        if(type== "meanKor") {
+        if(type== "keyword") {
+            keywords[index]= val;
+            setKeywords(keywords);
+        }else if(type== "meanKor") {
             mean_kor[index]= val;
             setMeanKor(mean_kor);
         }else if(type== "meanEn") {
@@ -526,12 +529,12 @@ function VocabView(props) {
                         </Popper>
                         { keywords[index]? 
                             <Typography suppressContentEditableWarning={true} contentEditable={true} 
-                                onInput={(e) => setSpecValue(e, index, "meanKor")} variant="h5" component="h3" className={classes.textTitle}>
+                                onInput={(e) => setSpecValue(e, index, "keyword")} variant="h5" component="h3" className={classes.textTitle}>
                                 {keywords[index]}
                             </Typography> :
                             
                             <Typography suppressContentEditableWarning={true} contentEditable={true} 
-                            onInput={(e) => setSpecValue(e, index, "meanKor")} variant="h5" component="h3" className={classes.textTitle}>
+                            onInput={(e) => setSpecValue(e, index, "keyword")} variant="h5" component="h3" className={classes.textTitle}>
                              영어단어(keyword)
                             </Typography>
                         

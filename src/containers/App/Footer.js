@@ -28,7 +28,7 @@ function Copyright() {
 	return (
 		<Typography variant="body2" color="textSecondary" style={{color: '#fff'}} align="center">
 			{'Copyright © '}
-			<Link color="inherit" href="https://smartenglishstudy-68bfc.web.app">
+			<Link color="inherit" href="https://smartenglish-study-learn.web.app">
 				SmartEnglishWebsite
 			</Link>{' '}
 			{new Date().getFullYear()}

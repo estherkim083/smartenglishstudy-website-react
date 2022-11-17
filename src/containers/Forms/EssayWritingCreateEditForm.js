@@ -40,7 +40,7 @@ function EssayWritingCreateEditForm(props) {
   let { id } = useParams();
   
   const [thumbnail, setThumbnail] = useState(''); 
-  const [hash, setHash ]= useState('');
+  const [hash, setHash ]= useState('default/workshop.jpg');
 
   const {acceptedFiles, getRootProps, getInputProps} = useDropzone({
     onDrop: file => {
@@ -101,13 +101,14 @@ function EssayWritingCreateEditForm(props) {
     }
     console.log(txt); // about topic input value text (about_content)
     
-    if(id!= null || id!== undefined) {
+    if(id!= null && id!== undefined) {
         axios
           .post(baseURL+"writing/edit-essay-room/"+id , {            
             topic: topicVal,
             about_content: txt,         
             about_room: aboutRoomVal,
-            room_title: titleVal,
+            room_title: titleVal,        
+            hash: hash,  
           },
           {
           headers: {
@@ -166,7 +167,7 @@ function EssayWritingCreateEditForm(props) {
     
     if(isLoaded) {
       
-      if(id!= null || id!== undefined) { // 세부 보기로 글쓰기 방 내용을 변경할 경우.
+      if(id!= null && id!== undefined) { // 세부 보기로 글쓰기 방 내용을 변경할 경우.
         axios
           .get(baseURL+"writing/edit-essay-room/"+id, {
             headers: {
@@ -210,20 +211,25 @@ function EssayWritingCreateEditForm(props) {
       const metadata = {
         contentType: 'image/*',
       };
-      if(id!= null || id!== undefined) {
-          const hashes= makeid(10);
-          const fileRef= ref(storage, `posts/essayroom/${hashes}/${file.name}`);
-          uploadBytes(fileRef, file, metadata).then(async()=> {
-            console.log("uploaded!!");
-          });
-          const hashroot= `${hashes}/${file.name}`;
-          setHash(hashroot);
-      }else{        
-        const hashes= hash.split('/')[0];
+      if(id!= null && id!== undefined) {
+        var hashes= hash.split('/')[0];
+        if(hashes == 'default') {
+          hashes = makeid(10);
+        }
         const fileRef= ref(storage, `posts/essayroom/${hashes}/${file.name}`);
         uploadBytes(fileRef, file, metadata).then(async()=> {
           console.log("uploaded!!");
         });
+        const hashroot= `${hashes}/${file.name}`;
+        setHash(hashroot);
+      }else{                
+        const hashes= makeid(10);
+        const fileRef= ref(storage, `posts/essayroom/${hashes}/${file.name}`);
+        uploadBytes(fileRef, file, metadata).then(async()=> {
+          console.log("uploaded!!");
+        });
+        const hashroot= `${hashes}/${file.name}`;
+        setHash(hashroot);
       }
     };
 

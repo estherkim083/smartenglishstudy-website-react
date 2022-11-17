@@ -162,7 +162,7 @@ function LoginForm(props) {
     fetch(`https://kauth.kakao.com/oauth/token`, {
       method: 'POST',
       headers :{ 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `grant_type=authorization_code&client_id=7082e8be221b20c3b85fe91ea7334d26&redirect_uri=https://smartenglishstudy-68bfc.web.app/auth/kakao&code=${CODE}`,
+      body: `grant_type=authorization_code&client_id=7082e8be221b20c3b85fe91ea7334d26&redirect_uri=https://smartenglish-study-learn.web.app/auth/kakao&code=${CODE}`,
     })
       .then(res=> res.json())
       .then(data => {
@@ -200,7 +200,7 @@ function LoginForm(props) {
             localStorage.setItem("user_name", data.kakao_account.profile.nickname);
             localStorage.setItem("email", data.kakao_account.email);
             localStorage.setItem("token", token);
-            window.location.href='https://smartenglishstudy-68bfc.web.app';
+            history.push('/');
           })
         .catch(error => {
           
@@ -220,13 +220,13 @@ function LoginForm(props) {
     });
 
   }
-  const KAKAO_AUTH_URL= `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=https://smartenglishstudy-68bfc.web.app/auth/kakao&response_type=code`;
+  const KAKAO_AUTH_URL= `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=https://smartenglish-study-learn.web.app/auth/kakao&response_type=code`;
   
   const handleKakaoLogin =() => {
     window.location= KAKAO_AUTH_URL;
   };
   const handleNaverLogin= ()=> {
-    window.location=`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=4N4hr24Can8FuT0yjggz&redirect_uri=https://smartenglishstudy-68bfc.web.app/auth/naver&state=sdfkjashftreer`;
+    window.location=`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=4N4hr24Can8FuT0yjggz&redirect_uri=https://smartenglish-study-learn.web.app/auth/naver&state=sdfkjashftreer`;
   };
 
   // 카카오 로그인 버튼 스타일링  

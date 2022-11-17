@@ -104,14 +104,17 @@ function BookWritingCreateEditForm(props) {
       txt+= text[i];
     }
     console.log(txt); // about topic input value text (about_content)
-    
-    if(id!= null || id!== undefined) {
+    if(id != null && id != undefined) {
+        console.log(hash);
+        console.log(titleVal);
         axios
           .post(baseURL+"writing/edit-book-writing-room/"+id , {            
             topic: topicVal,
             about_content: txt,         
             about_room: aboutRoomVal,
             room_title: titleVal,
+            book_info:bookInfoVal,
+            hash: hash
           },
           {
           headers: {
@@ -125,7 +128,7 @@ function BookWritingCreateEditForm(props) {
           .catch(function (error) {
           })
           .then(function (res) {
-            window.location.href="/writing/book/";
+           window.location.href="/writing/book/";
           });
     }else {
       var hashVal='';
@@ -170,8 +173,7 @@ function BookWritingCreateEditForm(props) {
   useEffect(() => {
     
     if(isLoaded) {
-      
-      if(id!= null || id!== undefined) { // 세부 보기로 글쓰기 방 내용을 변경할 경우.
+      if(id != null && id != undefined) { // 세부 보기로 글쓰기 방 내용을 변경할 경우.
         axios
           .get(baseURL+"writing/edit-book-writing-room/"+id, {
             headers: {
@@ -217,20 +219,25 @@ function BookWritingCreateEditForm(props) {
       const metadata = {
         contentType: 'image/*',
       };
-      if(id!= null || id!== undefined) {
-          const hashes= makeid(10);
-          const fileRef= ref(storage, `posts/bookwritingroom/${hashes}/${file.name}`);
-          uploadBytes(fileRef, file, metadata).then(async()=> {
-            console.log("uploaded!!");
-          });
-          const hashroot= `${hashes}/${file.name}`;
-          setHash(hashroot);
-      }else{        
-        const hashes= hash.split('/')[0];
+      if(id != null && id != undefined) {
+        var hashes= hash.split('/')[0];
+        if(hashes == 'default') {
+          hashes = makeid(10);
+        }
         const fileRef= ref(storage, `posts/bookwritingroom/${hashes}/${file.name}`);
         uploadBytes(fileRef, file, metadata).then(async()=> {
           console.log("uploaded!!");
         });
+        const hashroot= `${hashes}/${file.name}`;
+        setHash(hashroot);
+      }else{        
+        const hashes= makeid(10);
+        const fileRef= ref(storage, `posts/bookwritingroom/${hashes}/${file.name}`);
+        uploadBytes(fileRef, file, metadata).then(async()=> {
+          console.log("uploaded!!");
+        });
+        const hashroot= `${hashes}/${file.name}`;
+        setHash(hashroot);
       }
     };
 

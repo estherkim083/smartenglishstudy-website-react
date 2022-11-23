@@ -11,6 +11,7 @@ import UnderLine from '../../../images/underline.png';
 import parse from 'html-react-parser';
 import Rating from '../../../components/Rating/Rating';
 import FormControl from '@material-ui/core/FormControl';
+import Loading from '../../../components/Loading';
 
 const useStyles = makeStyles((theme) => ({
     textArea: {
@@ -69,6 +70,7 @@ function EditorPageView(props) {
 
     const classes = useStyles();
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps 
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
     let { label, id } = useParams();
     const [ datas, setDatas ]= useState({});
@@ -94,7 +96,6 @@ function EditorPageView(props) {
     });
     useEffect(() => {
         if(isLoaded) {
-            document.getElementById('textarea').setAttribute('readonly', 'readonly');
             if(label== "book") {
                 setEditState(true);
                 axios
@@ -113,6 +114,8 @@ function EditorPageView(props) {
                         setText(res["data"].essay_actual_rsrc_text);
                         setTextFieldInput(res["data"].evaluation_text);
                         setInputVal(res["data"].memo_html);
+                        setIsPageLoaded(true);
+                        document.getElementById('textarea').setAttribute('readonly', 'readonly');
                     })
                     .catch(error => {});
             }else if(label== "essay") {
@@ -134,12 +137,17 @@ function EditorPageView(props) {
                         setText(res["data"].essay_actual_rsrc_text);
                         setTextFieldInput(res["data"].evaluation_text);
                         setInputVal(res["data"].memo_html);
+                        setIsPageLoaded(true);
+                        document.getElementById('textarea').setAttribute('readonly', 'readonly');
                     })
                     .catch(error => {});
             }
         }
     }, [isLoaded]);
     
+    if(!isPageLoaded) {
+        return <Loading/>;
+    }
 
     return (
         <div>

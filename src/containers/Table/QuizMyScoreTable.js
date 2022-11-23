@@ -21,6 +21,7 @@ import styles from './tableStyle-jss';
 import TablePagination from '@material-ui/core/TablePagination';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import Loading from '../../components/Loading';
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -140,7 +141,6 @@ function QuizMyScoreTable(props) {
   
   useEffect(() => {
     if (isLoaded) {
-        setIsPageLoaded(true);
         var urlPath= '';
         if(type=="myscore") {
             urlPath='quiz-score-list/';
@@ -169,11 +169,15 @@ function QuizMyScoreTable(props) {
             }
             setDatas(tmp_datas);
             console.log(tmp_datas);
+            setIsPageLoaded(true);
           })
           .catch(error => {});
     }
   }, [isLoaded]);
 
+  if(!isPageLoaded) {
+    return <Loading/>;
+  }
   return (
     <div className={classes.rootTable} style={{marginTop: '-10px'}}>
       <Table className={classNames(classes.table, classes.bordered, classes.hover)} > 

@@ -24,6 +24,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import TablePagination from '@material-ui/core/TablePagination';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import Loading from '../../components/Loading';
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -138,7 +139,6 @@ function BorderedTable(props) {
   
   useEffect(() => {
     if (isLoaded) {
-        setIsPageLoaded(true);
         axios
           .get(baseURL+"reading/reading-view/", {
             headers: {
@@ -160,6 +160,7 @@ function BorderedTable(props) {
               tmp_datas[i]= tmp;
             }
             setDatas(tmp_datas);
+            setIsPageLoaded(true);
                 
           })
           .catch(error => {});
@@ -189,14 +190,11 @@ function BorderedTable(props) {
               window.location.href= '/reading';
           });
   }
+  if(!isPageLoaded) {
+    return <Loading/>;
+  }
   return (
     <div className={classes.rootTable}>
-      <Toolbar className={classes.toolbar}>
-        <div className={classes.title}>
-          <Typography variant="h6">리딩 영어 자료실</Typography>
-        </div>
-        {/* <FloatingButtons/> */}
-      </Toolbar>
       <Table className={classNames(classes.table, classes.bordered, classes.hover)} > 
         <TableHead>
           <TableRow> 

@@ -18,10 +18,10 @@ export default function App() {
   //   console.warn('warning text - I will not');
   // }, []);
 
-  // console.warn = () => {};
-  // console.error = () => {};
-  // console.info = () => {};
-  // console.log= () => {};
+  console.warn = () => {};
+  console.error = () => {};
+  console.info = () => {};
+  console.log= () => {};
   
   // console.log("I am just another dummy console log, suppose to be suppressed 🙂");
 

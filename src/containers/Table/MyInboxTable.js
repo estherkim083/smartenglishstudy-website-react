@@ -20,6 +20,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
 import TablePagination from '@material-ui/core/TablePagination';
 import axios from 'axios';
+import Loading from '../../components/Loading';
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -145,7 +146,6 @@ function MyInboxTable(props) {
   
   useEffect(() => {
     if (isLoaded) {
-        setIsPageLoaded(true);
         axios
             .get(baseURL+"mypage/inbox-data/", {
                 headers: {
@@ -165,11 +165,14 @@ function MyInboxTable(props) {
                     tmp[i]=createData(ids[i], res_data['제목'], res_data['글쓴이'], res_data['생성날짜'], res_data['수정날짜']);
                 }
                 setDatas(tmp);
+                setIsPageLoaded(true);
             })
             .catch(error => {});
     }
   }, [isLoaded]);
-
+  if(!isPageLoaded) {
+    return <Loading/>;
+  }
   return (
     <div className={classes.rootTable}>
       <Table className={classNames(classes.table, classes.bordered, classes.hover)} > 

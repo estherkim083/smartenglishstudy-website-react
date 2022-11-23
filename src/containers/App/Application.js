@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Dashboard from '../Templates/Dashboard';
 import { ThemeContext } from './ThemeWrapper';
 import { Switch, Route, useHistory } from 'react-router-dom';
+import RefreshRoute from './RefreshRoute';
 import {ListeningMenu, ListeningCreateScripts, ListeningViewScripts, ReadingCreate, ReadingView, ReadingMenu, ReadingVocab, MyProfile, MyInbox, ProfileList, ProfilePeerList, ChatMessage, EssayWritingBoardList, EssayWritingView, EssayWriting, EssayRoomCreate, EditorBoardList, EditorPageView, EditorPageOnlyView, BookWritingBoardList, BookWritingRoomCreate, BookWritingView, BookWriting, Quiz, CreateQuiz, QuizView, SolveRoomList, SolveRoomView, SolveRoom, SolveRoomResultView, QuizMyScoreList, QuizScoreView, QuizStudentScoreList, VocabView, VocabQuiz, VocabQuizTakeQuiz, VocabQuizResult} from '../pageListAsync';
 import Home from './Home';
 
@@ -44,7 +45,8 @@ function Application(props) {
         <Route exact path='/quiz/take-quiz' component={SolveRoomList}/> 
         <Route exact path='/quiz/take-quiz/:id' component={SolveRoom}/> 
         <Route exact path='/quiz/take-quiz/result/:id' component={SolveRoomResultView}/> 
-        <Route exact path='/quiz/take-quiz/solve/:id' component={SolveRoomView}/> 
+        {/* <Route exact path='/quiz/take-quiz/solve/:id' component={SolveRoomView}/>   */}
+        <RefreshRoute exact path='/quiz/take-quiz/solve/:id' redirectionPath='/quiz/take-quiz' component={SolveRoomView}/> 
         <Route exact path='/quiz/my-score' component={QuizMyScoreList}/> 
         <Route exact path='/quiz/my-score/:id' component={QuizScoreView}/> 
         <Route exact path='/quiz/student-score' component={QuizStudentScoreList}/> 

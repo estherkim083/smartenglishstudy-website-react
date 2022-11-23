@@ -7,9 +7,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import { withStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
 import classNames from 'classnames';
-import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -20,10 +18,10 @@ import styles from './tableStyle-jss';
 import Link from '@material-ui/core/Link';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
-import FloatingButtons from '../FloatingButton/ListeningBoardFloatingButtons';
 import TablePagination from '@material-ui/core/TablePagination';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import Loading from '../../components/Loading';
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -138,7 +136,6 @@ function BorderedTable(props) {
   
   useEffect(() => {
     if (isLoaded) {
-        setIsPageLoaded(true);
         axios
           .get(baseURL+"listening/", {
             headers: {
@@ -161,8 +158,10 @@ function BorderedTable(props) {
             }
             setDatas(tmp_datas);
                 
+            setIsPageLoaded(true);
           })
           .catch(error => {});
+          
     }
   }, [isLoaded]);
   const handleDelete = (id) => {
@@ -189,90 +188,86 @@ function BorderedTable(props) {
               window.location.href= '/listening';
           });
   }
-  return (
-    <div className={classes.rootTable}>
-      <Toolbar className={classes.toolbar}>
-        <div className={classes.title}>
-          <Typography variant="h6">리스닝 빈칸 뚫기 연습하기</Typography>
-        </div>
-        <FloatingButtons/>
-        <div className={classes.title}>
-          <Typography variant="h6" uppercase={true}>Add more list items</Typography>
-        </div>
-      </Toolbar>
-      <Table className={classNames(classes.table, classes.bordered, classes.hover)} > 
-        <TableHead>
-          <TableRow> 
-            <TableCell width={340} className={classes.cellTitleStyle}>제목</TableCell>
-            <TableCell align="right" className={classes.cellTitleStyle}>글쓴이</TableCell>
-            <TableCell align="right" className={classes.cellTitleStyle}>만든 날짜</TableCell>
-            <TableCell align="right" className={classes.cellTitleStyle}>수정 날짜</TableCell>
-            <TableCell align="right" className={classes.cellTitleStyle}>Edit</TableCell>
-            <TableCell align="right" className={classes.cellTitleStyle}>Delete</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {(rowsPerPage > 0
-            ? datas.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : datas
-          ).map((n) => (
-            <TableRow key={n.id}> 
-              <TableCell padding="default" className={classes.cellRegularStyle} onClick={() => moveToSpecificListeningPage(n)}>{n.title}</TableCell>
-              <TableCell align="right" className={classes.cellRegularStyle} onClick={() => moveToSpecificListeningPage(n)}>{n.author}</TableCell>
-              <TableCell align="right" className={classes.cellRegularStyle} onClick={() => moveToSpecificListeningPage(n)}>{n.created_at}</TableCell>
-              <TableCell align="right" className={classes.cellRegularStyle} onClick={() => moveToSpecificListeningPage(n)}>{n.modified_at}</TableCell>
-              <TableCell align="right" className={classes.cellRegularStyle}>
-                  <Link
-                    color="textPrimary"
-                    href={'/listening/listening-create-scripts/' + n.id}
-                    className={classes.link}
-                  >
-                    <EditIcon></EditIcon>
-                  </Link>
-              </TableCell>
-              <TableCell align="right" className={classes.cellRegularStyle}>
-                  <div
-                        color="textPrimary" 
-                        onClick= {() => handleDelete(n.id)}
-                        // href={'/admin/delete/' + n.id}
-                        // className={classes.link}
-                      >
-                    <DeleteForeverIcon></DeleteForeverIcon>
-                  </div>  
-              </TableCell>
+  if(!isPageLoaded) {
+    return <Loading/>;
+  }
+  else {
+    return (
+      <div className={classes.rootTable}>
+        <Table className={classNames(classes.table, classes.bordered, classes.hover)} > 
+          <TableHead>
+            <TableRow> 
+              <TableCell width={340} className={classes.cellTitleStyle}>제목</TableCell>
+              <TableCell align="right" className={classes.cellTitleStyle}>글쓴이</TableCell>
+              <TableCell align="right" className={classes.cellTitleStyle}>만든 날짜</TableCell>
+              <TableCell align="right" className={classes.cellTitleStyle}>수정 날짜</TableCell>
+              <TableCell align="right" className={classes.cellTitleStyle}>Edit</TableCell>
+              <TableCell align="right" className={classes.cellTitleStyle}>Delete</TableCell>
             </TableRow>
-          ))}
-          {emptyRows > 0 && (
-            <TableRow style={{ height: 0 * emptyRows }}>
-              <TableCell colSpan={6} className={classes.cellRegularStyle}>. . . . .</TableCell>
+          </TableHead>
+          <TableBody>
+            {(rowsPerPage > 0
+              ? datas.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : datas
+            ).map((n) => (
+              <TableRow key={n.id}> 
+                <TableCell padding="default" className={classes.cellRegularStyle} onClick={() => moveToSpecificListeningPage(n)}>{n.title}</TableCell>
+                <TableCell align="right" className={classes.cellRegularStyle} onClick={() => moveToSpecificListeningPage(n)}>{n.author}</TableCell>
+                <TableCell align="right" className={classes.cellRegularStyle} onClick={() => moveToSpecificListeningPage(n)}>{n.created_at}</TableCell>
+                <TableCell align="right" className={classes.cellRegularStyle} onClick={() => moveToSpecificListeningPage(n)}>{n.modified_at}</TableCell>
+                <TableCell align="right" className={classes.cellRegularStyle}>
+                    <Link
+                      color="textPrimary"
+                      href={'/listening/listening-create-scripts/' + n.id}
+                      className={classes.link}
+                    >
+                      <EditIcon></EditIcon>
+                    </Link>
+                </TableCell>
+                <TableCell align="right" className={classes.cellRegularStyle}>
+                    <div
+                          color="textPrimary" 
+                          onClick= {() => handleDelete(n.id)}
+                          // href={'/admin/delete/' + n.id}
+                          // className={classes.link}
+                        >
+                      <DeleteForeverIcon></DeleteForeverIcon>
+                    </div>  
+                </TableCell>
+              </TableRow>
+            ))}
+            {emptyRows > 0 && (
+              <TableRow style={{ height: 0 * emptyRows }}>
+                <TableCell colSpan={6} className={classes.cellRegularStyle}>. . . . .</TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+          
+          <TableFooter>
+            <TableRow>
+              <TablePagination
+                rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                colSpan={3}
+                count={datas.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                SelectProps={{
+                  inputProps: { 'aria-label': '페이지당 몇개' },
+                  native: true,
+                }}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+                ActionsComponent={TablePaginationActions}
+                labelRowsPerPage={'페이지당 몇개'}
+                labelDisplayedRows={({ from, to, count }) =>
+                      `전체 ${count !== -1 ? count : `MORE THAN ${to}`}개, ${from}-${to}`}
+              />
             </TableRow>
-          )}
-        </TableBody>
-        
-        <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-              colSpan={3}
-              count={datas.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              SelectProps={{
-                inputProps: { 'aria-label': '페이지당 몇개' },
-                native: true,
-              }}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-              ActionsComponent={TablePaginationActions}
-              labelRowsPerPage={'페이지당 몇개'}
-              labelDisplayedRows={({ from, to, count }) =>
-                    `전체 ${count !== -1 ? count : `MORE THAN ${to}`}개, ${from}-${to}`}
-            />
-          </TableRow>
-        </TableFooter>
-      </Table>
-    </div>
-  );
+          </TableFooter>
+        </Table>
+      </div>
+    );   
+  }
 }
 
 BorderedTable.propTypes = {

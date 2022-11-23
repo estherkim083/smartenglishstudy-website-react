@@ -50,6 +50,9 @@ const styles = theme => ({
     '@media (min-width: 1000px)': {
       minWidth: 600,
     },    
+    '@media (min-width: 1600px)': {
+      minWidth: 600,
+    },    
   },
   table: {
     maxWidth: 1500,

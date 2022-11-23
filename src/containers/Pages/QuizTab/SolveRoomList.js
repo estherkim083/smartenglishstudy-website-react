@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import useWindowDimensions from '../../../useWindowDimensions';
 import QuizRoomCard from '../../../components/RoomCard/QuizRoomCard';
 import axios from 'axios';
+import Loading from '../../../components/Loading';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,6 +31,7 @@ function SolveRoomList(props) {
     const classes = useStyles();
     const [datas, setDatas] = useState({});
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps 
     const { height, width } = useWindowDimensions();
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
     useEffect(() => {
@@ -60,12 +62,15 @@ function SolveRoomList(props) {
                 .then(res => {
                     setDatas(res["data"]);
                     console.log(res["data"]);
-                        
+                    setIsPageLoaded(true);
                 })
                 .catch(error => {});
             
         }
     },[isLoaded]);
+    if(!isPageLoaded) {
+        return <Loading/>;
+    }
     return (
         <div className={classes.root}>
             <PapperBlock title="퀴즈 문제풀이방" whiteBg icon="ion-ios-grid-outline" desc="

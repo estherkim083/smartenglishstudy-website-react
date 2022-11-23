@@ -21,6 +21,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import keycode from 'keycode';
+import Loading from '../../../components/Loading';
 
 const useStyles = makeStyles((theme) => ({
     textArea: {
@@ -81,6 +82,7 @@ function ReadingView(props) {
     const actualTextAreaRef = useRef();
     const classes = useStyles();
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps 
     const [ title, setTitle] =useState(null);
     const [ text, setText ]= useState(null);
     const [ inputvalue, setInputVal ]= useState('');
@@ -249,7 +251,6 @@ function ReadingView(props) {
 
     useEffect(() => {
         if(isLoaded) {
-            document.getElementById('textarea').setAttribute('readonly', 'readonly');
             
             axios
                 .get(baseURL+"reading/reading-get-friends-data/"+id, {
@@ -286,6 +287,8 @@ function ReadingView(props) {
                     sethtmlText(res["data"]["highlight_html"]);
                     setSelectedItem(res["data"]["tags"]);
                     setInputVal(res["data"]["memo_html"]);
+                    setIsPageLoaded(true);
+                    document.getElementById('textarea').setAttribute('readonly', 'readonly');
                 })
         }
     }, [isLoaded]);   
@@ -329,7 +332,9 @@ function ReadingView(props) {
         });
       };
     
-    
+    if(!isPageLoaded) {
+        return <Loading/>;
+    }
 
     return (        
         <PapperBlock title="Reading Menu" whiteBg icon="ion-ios-grid-outline" desc="

@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import styles from './tableStyle-jss';
+import Loading from '../../components/Loading';
 
 // let id = 0;
 function createData(typeNumber, type, number1, number2, number3, number4, number5, number6, number7, number8, number9, number10) {
@@ -97,11 +98,15 @@ function QuizMyScoreViewTable(props) {
                         setDatas(tmp_datas);
                         console.log(tmp_datas);
                     }
+                    setIsPageLoaded(true);
                 })
                 .catch(error => {});
             
         }
     },[isLoaded]);
+    if(!isPageLoaded) {
+        return <Loading/>;
+    }
     return (
         <div className={classes.rootTable}>
         <Table className={classNames(classes.table, classes.bordered, classes.hover)} > 

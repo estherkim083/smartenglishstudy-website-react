@@ -1,12 +1,24 @@
 import { useEffect, useState } from 'react';
+import { useParams, useHistory } from "react-router-dom";
 
 const useCountdown = (targetDate) => {
   console.log(targetDate);
   const countDownDate = new Date(targetDate).getTime();
+  let { id } = useParams();
+  const history = useHistory();
 
   const [countDown, setCountDown] = useState(
     countDownDate - new Date().getTime()
   );
+  useEffect(()=> {
+    window.addEventListener("unload", function (e) {
+      console.log('going away', e)
+      // history.push('/quiz/take-quiz/'+id);
+      setInterval(()=> {
+        window.location.href= '/quiz/take-quiz'+id;
+      }, 5000);
+    })
+  })
 
   useEffect(() => {
     if(countDownDate - new Date().getTime()<=0) {

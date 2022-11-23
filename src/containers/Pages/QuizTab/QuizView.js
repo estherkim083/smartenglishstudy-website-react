@@ -15,6 +15,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 
 import { storage } from '../../../firebase';
 import { ref, getDownloadURL } from "firebase/storage";
+import Loading from '../../../components/Loading';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -50,6 +51,7 @@ function QuizView(props) {
     const [datas, setDatas]= useState({});
 
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps 
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
     let { id } = useParams();
     const [editBigQues, setEditBigQues] = useState('');
@@ -109,6 +111,7 @@ function QuizView(props) {
 
                         }
                     });*/
+                    setIsPageLoaded(true);
                 })
                 .catch(error => {});
             
@@ -118,6 +121,7 @@ function QuizView(props) {
     const selectQuestionTypeNum= (index)=> {
         const questionId= index+1;
         setQuesId(questionId);
+        setIsPageLoaded(false);
         axios
             .get(baseURL+"quiz/quiz-detail/"+id+'/'+questionId, {
                 headers: {
@@ -147,6 +151,7 @@ function QuizView(props) {
                         .catch((error) => {
                         });
                 }
+                setIsPageLoaded(true);
             })
             .catch(error => {});
     };
@@ -166,7 +171,7 @@ function QuizView(props) {
                         <div style={{position: 'relative', marginTop: '50px'}}>
                             {Object.keys(datas).length!= 0 && datas[index+1]!= undefined && datas[index+1]["label"]!= undefined && 
                             <>
-                                <Grid item xs={12}> <Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="80%" height={40}>
+                                <Grid item xs={12}> <Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="20%" height={40} boxShadow={6}>
                                     <Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'15px', marginTop: '10px'}}>
                                         {index+1}번. {datas[index+1]["label"]}문제.
                                     </Typography>
@@ -291,6 +296,9 @@ function QuizView(props) {
     const handleChangeBigBodyQuestion= (e)=>{
         setEditBigBodyQues(e.target.value);
     };
+    if(!isPageLoaded) {
+        return <Loading/>;
+    }
     return (
         <div className={classes.root}>
         <PapperBlock title="퀴즈 출제방 세부 화면" whiteBg icon="ion-ios-grid-outline" desc="
@@ -321,7 +329,7 @@ function QuizView(props) {
                     }
                     <Grid item xs={12}>
                     {typeAndNumQuestion.length != 0 &&
-                                <Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="80%" height={40}><Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'23px'}}>
+                                <Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="30%" height={40} boxShadow={6}><Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'23px'}}>
                                     유형 {quesId} 번.&nbsp;&nbsp;{typeAndNumQuestion[quesId-1]["type"]} 문제&nbsp;&nbsp;&nbsp;1번-{typeAndNumQuestion[quesId-1]["num"]}번
                                 </Typography></Box>}
                     </Grid>

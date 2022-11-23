@@ -110,7 +110,6 @@ function SolveRoomView(props) {
                     setPageLoaded(true);
                 })
                 .catch(error => {});
-                setPageLoaded(true);
         }
     },[isLoaded]);
     
@@ -118,6 +117,7 @@ function SolveRoomView(props) {
         setQuesId(index);
         setStudentAnswers([]);
         const questionId= index+1;
+        setPageLoaded(false);
         axios
             .get(baseURL+"quiz/quiz-detail-solveroom/"+id+'/'+questionId, {
                 headers: {
@@ -146,6 +146,7 @@ function SolveRoomView(props) {
                         .catch((error) => {
                         });
                 }
+                setPageLoaded(true);
             })
             .catch(error => {});
     };
@@ -175,10 +176,10 @@ function SolveRoomView(props) {
             <div style={{display: 'flex', flexDirection: 'column'}}>
                 {x.map((_, index) => {
                     return (
-                        <div style={{position: 'relative', marginTop: '50px'}}>
+                        <div style={{position: 'relative', marginTop: '80px'}}>
                             {Object.keys(datas).length!= 0 && datas[index+1]!= undefined && datas[index+1]["label"]!= undefined && 
                             <>
-                                <Grid item xs={12}><Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="80%" height={40}>
+                                <Grid item xs={12}><Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="20%" height={40} boxShadow={6}>
                                     <Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'15px', marginTop: '10px'}}>
                                         {index+1}번. {datas[index+1]["label"]}문제.
                                     </Typography>
@@ -321,7 +322,7 @@ function SolveRoomView(props) {
         selectQuestionTypeNum(quesId+1);
     };
 
-    if(pageLoaded== false) {
+    if(!pageLoaded) {
         return (<Loading/>);
     }
     else if (seconds==null) {
@@ -366,7 +367,7 @@ function SolveRoomView(props) {
                                 <audio controls="controls" src={listeningmp3file} autoplay></audio>
                             </Grid>
                         }
-                        <Grid item xs={12}><Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="80%" height={40}>
+                        <Grid item xs={12}><Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="30%" height={40} boxShadow={6}>
                         {typeAndNumQuestion.length != 0 &&typeAndNumQuestion[quesId] != undefined && <Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'23px'}}>
                             {quesId+1} 번.&nbsp;&nbsp;{typeAndNumQuestion[quesId]["type"]} 문제&nbsp;&nbsp;&nbsp;1번-{typeAndNumQuestion[quesId]["num"]}번
                         </Typography>}</Box>

@@ -12,7 +12,7 @@ const styles = {
 
 function Loading(props) {
   const { classes } = props;
-  return (<CircularProgress className={classes.circularProgress} size={90} thickness={1} color="secondary" />);
+  return (<CircularProgress className={classes.circularProgress} size={90} thickness={1} color="primary" />);
 }
 
 Loading.propTypes = {

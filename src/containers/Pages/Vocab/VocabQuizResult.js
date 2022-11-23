@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import Loading from '../../../components/Loading';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -33,6 +34,7 @@ function SolveRoom(props) {
     const classes = useStyles();
     const [datas, setDatas] = useState({});
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps 
     const { height, width } = useWindowDimensions();
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
     let { id } = useParams();
@@ -64,10 +66,14 @@ function SolveRoom(props) {
                 .then(res => {
                     console.log(res["data"]);
                     setDatas(res["data"]);
+                    setIsPageLoaded(true);
                 })
                 .catch(error => {});         
         }
     },[isLoaded]);
+    if(!isPageLoaded) {
+        return <Loading/>;
+    }
     return (
         <div className={classes.root}>
             <PapperBlock title="어휘퀴즈 문제풀이방" whiteBg icon="ion-ios-grid-outline" desc="

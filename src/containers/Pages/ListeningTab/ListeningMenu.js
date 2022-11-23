@@ -2,10 +2,14 @@ import React, {useEffect} from 'react';
 import PapperBlock from '../../../components/PapperBlock/PapperBlock';
 import BorderedTable from '../../Table/ListeningBorderedTable';
 import { useHistory } from "react-router-dom";
+import useWindowDimensions from '../../../useWindowDimensions';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 
 function ListeningMenu(props) {
     let history= useHistory();
+    const { height, width } = useWindowDimensions();
     useEffect(() => {
         var author= localStorage.getItem("user_name");
         if(author === null) {
@@ -19,6 +23,9 @@ function ListeningMenu(props) {
           localStorage.removeItem("ChatMessageOnce");
         } 
     });
+    const handleListeningBtnOnClick= () => {
+      window.location.href='/listening/listening-create-scripts/';
+    };
     return (
         <div>
             <PapperBlock title="Listening Menu" whiteBg icon="ion-ios-grid-outline" desc="
@@ -27,6 +34,9 @@ function ListeningMenu(props) {
                     <BorderedTable />
                 </div>
             </PapperBlock>
+            <Fab color="secondary" aria-label="add" style={{position: 'relative', marginLeft: `calc(193% - ${width}px)`, bottom: `calc(190%-${height}px))`}} onClick={handleListeningBtnOnClick}>
+                <AddIcon />
+            </Fab>
         </div>
     );
 } 

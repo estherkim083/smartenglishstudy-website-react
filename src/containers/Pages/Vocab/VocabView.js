@@ -23,6 +23,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import useWindowDimensions from '../../../useWindowDimensions';
+import Loading from '../../../components/Loading';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -90,6 +91,7 @@ function VocabView(props) {
     const itemsRef = useRef([]);
 
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps 
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
     const [ ids, setIds ]= useState([]);
     const [ keywords, setKeywords ]= useState([]);
@@ -308,6 +310,7 @@ function VocabView(props) {
                     setColor(tmp[8]);
                     setColorKor(tmp[9]);
                     itemsRef.current = itemsRef.current.slice(0, tmp[0].length);
+                    setIsPageLoaded(true);
                 })
                 .catch(error => {});
             
@@ -394,6 +397,9 @@ function VocabView(props) {
     const handlePronounicationInputChange= event => {
         setPronounication(event.target.value);
     };
+    if(!isPageLoaded) {
+        return <Loading/>;
+    }
     return (
         // 카드 뷰로 변경하기.
         <div className={classes.root}>

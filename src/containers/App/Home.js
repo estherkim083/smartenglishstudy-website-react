@@ -144,26 +144,29 @@ function Home() {
       <Grid
           container
           alignItems="center"
-          justify="flex-start"
+          justify="center"
           direction="row"
-          style={{marginTop: '-870px', marginLeft: '30px', position: 'relative', marginBottom: '100px'}}
+          style={{marginTop: '-870px', marginLeft: '28px', position: 'relative', marginBottom: '100px'}}
       >
         <Grid item xs ={5}> 
-              <img src={studentimg1} width="550px" height="400px"/>
-        </Grid>
-        <Grid item xs ={5}> 
-              <Typography component="h1" style={{fontFamily:'CookieRun-Regular', fontSize: "25px", fontWeight: "bold", marginTop: "20px"}}>
+              <Typography component="h1" style={{fontFamily:'CookieRun-Regular', fontSize: "25px", fontWeight: "bold", marginTop: "20px", fontStyle: 'italic'}}>
               Learning English Smart
               </Typography>
-              <Typography component="h1" style={{fontFamily:'CookieRun-Regular', fontSize: "20px", marginTop: "20px"}}>
+              <Typography component="h1" style={{fontFamily:'CookieRun-Regular', fontSize: "20px", marginTop: "20px", fontStyle: 'italic'}}>
               다양한 영어학습 분야들을 각종 특화된 방법으로 공부할수 있습니다. 
               </Typography>
-              <Typography display="block" component="h1" style={{fontFamily:'CookieRun-Regular', fontSize: "20px",marginTop: "20px" }}>
+              <Typography display="block" component="h1" style={{fontFamily:'CookieRun-Regular', fontSize: "20px",marginTop: "20px" , fontStyle: 'italic'}}>
               영어에 자신감을 갖고 스마트한 영어 실력을 갖추어 보세요. 
+              </Typography>
+              <Typography component="h1" style={{fontFamily:'CookieRun-Regular', fontSize: "20px", marginTop: "20px", marginLeft: "0", fontStyle: 'italic'}}>
+              영어자료들을 공유하고, 첨삭받을수 있는 시스템입니다.  
+              </Typography>
+              <Typography display="block" component="h1" style={{fontFamily:'CookieRun-Regular', fontSize: "20px",marginTop: "20px" , marginLeft: "0", fontStyle: 'italic'}}>
+              또한, 자동으로 리스닝 빈칸 뚫기 및 영어 퀴즈들을 채점해줍니다. 
               </Typography>
         
         </Grid>
-        <Grid item xs ={5}> 
+        {/* <Grid item xs ={5}> 
               <Typography component="h1" style={{fontFamily:'CookieRun-Regular', fontSize: "25px", fontWeight: "bold", marginTop: "20px", marginLeft: "20px"}}>
               Share& Automatic Scoring System
               </Typography>
@@ -176,7 +179,7 @@ function Home() {
         </Grid>
         <Grid item xs ={5}> 
               <img src={circleshoes} width="450px" height="350px" style={{marginTop:'10px'}}/>
-        </Grid>
+        </Grid> */}
       </Grid>
         {/* <hr width="100%" 
           style={{marginTop:'50px', marginLeft:'-30px'}}

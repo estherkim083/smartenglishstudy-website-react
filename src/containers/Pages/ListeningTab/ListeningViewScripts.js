@@ -24,6 +24,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Dialog from '@material-ui/core/Dialog';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
+import Loading from '../../../components/Loading';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -82,6 +83,9 @@ function ListeningMenu(props) {
     const [ blankWords, setBlankWords ] = useState(null);
     const [ URLVal, setURLVal ]= useState(null);
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
+    const [caseZeroLoaded, setCaseZeroLoaded] = useState(false);
+    const [caseTwoLoaded, setCaseTwoLoaded] = useState(false);
+    const [caseThreeLoaded, setCaseThreeLoaded] = useState(false);
 
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
@@ -209,6 +213,7 @@ function ListeningMenu(props) {
                         }
                     }
                     //firestorage 에서 리스닝 mp3 파일 가져오기 끝
+                    setCaseZeroLoaded(true);
 
                 })
         }
@@ -237,6 +242,7 @@ function ListeningMenu(props) {
             let searchvalue = '_______';
             const str_txt= txt.split(searchvalue);
             setScriptBlankText(str_txt);
+            setCaseTwoLoaded(true);
           })
           .catch(error => {});
     };
@@ -261,6 +267,7 @@ function ListeningMenu(props) {
           .then(res => {
             setBlankWords(res["data"]["blank_words"]);
             setGradeList(res["data"]["grade_list"]);
+            setCaseThreeLoaded(true);
           })
           .catch(error => {});
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -268,6 +275,9 @@ function ListeningMenu(props) {
     const getStepContent= (step) => {
         switch (step) {
             case 0:
+                if(!caseZeroLoaded) {
+                    return <Loading/>;
+                }
                 return <div className="row preview">
                             <div id="listeningmp3audio"></div>
                             <Typography variant="h6" component="h2" className={classes.title}>
@@ -338,6 +348,9 @@ function ListeningMenu(props) {
                             </div>
                         </div>
             case 2:
+                if(!caseTwoLoaded) {
+                    return <Loading/>;
+                }
                 return <div style= {{margin:"10px"}}>
                     <div style={{fontFamily:"CookieRun-Regular"}}>빈칸 뚫기 위한 시간이 걸립니다. 조금만 기다려주시기 바랍니다.</div><br/>
                     <div style={{fontFamily:"CookieRun-Regular"}}>최소한 한문장당 빈칸 1개가 생성됩니다.</div><br/>
@@ -358,6 +371,9 @@ function ListeningMenu(props) {
                     }
                 </div>;
             case 3:
+                if(!caseThreeLoaded) {
+                    return <Loading/>;
+                }
                 return <div style= {{margin:"10px"}}>
                     {console.log(blankWords)}
                     {scriptBlankText && 

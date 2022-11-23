@@ -29,6 +29,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
+import Loading from '../../../components/Loading';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -52,6 +53,7 @@ function EssayWriting(props) {
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
     let { id, userid, email } = useParams();
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps 
     const [ essayDatas, setEssayDatas] = useState({});
     const [ metaDatas, setMetaDatas ]= useState({});
     const [ editable, setEditable] = useState(false);
@@ -161,6 +163,7 @@ function EssayWriting(props) {
                         })
                         .then(res => {                        
                             setEssayDatas(res["data"]);
+                            setIsPageLoaded(true);
                         })
                         .catch(error => {});
     
@@ -186,6 +189,7 @@ function EssayWriting(props) {
                             console.log(metaDatas);
                             setEssayDatas(datas)
                             setMetaDatas(metaDatas);
+                            setIsPageLoaded(true);
                         })
                         .catch(error => {});
     
@@ -266,7 +270,9 @@ function EssayWriting(props) {
           friends: dataState.friends
         });
       };
-    
+    if(!isPageLoaded) {
+        return <Loading/>;
+    }
     return (
         <div>
             <PapperBlock title="EssayWriting Menu" whiteBg icon="ion-ios-grid-outline" desc="

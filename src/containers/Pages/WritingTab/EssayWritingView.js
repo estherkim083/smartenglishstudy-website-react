@@ -11,6 +11,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
+import Loading from '../../../components/Loading';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,6 +33,7 @@ function EssayWritingView(props) {
     const classes = useStyles();
     let { id } = useParams();
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps 
     const [data, setData] = useState({});
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
     const [expanded, setExpanded] = useState(null);
@@ -108,12 +110,15 @@ function EssayWritingView(props) {
                 .then(res => {
                     setData(res["data"]);
                     console.log(res["data"]);
-                        
+                    setIsPageLoaded(true);                        
                 })
                 .catch(error => {});
         }
 
     }, [isLoaded]);
+    if(!isPageLoaded) {
+        return <Loading/>;
+    }
     return (
         <div>
             <PapperBlock title="EssayWriting Menu" whiteBg icon="ion-ios-grid-outline" desc="

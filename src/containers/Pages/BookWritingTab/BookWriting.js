@@ -29,6 +29,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
+import Loading from '../../../components/Loading';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -57,6 +58,7 @@ function BookWriting(props) {
     const [ editable, setEditable] = useState(false);
     const [ actualEditState ,setActualEditState ] = useState(false);
     const [currentUserDataJson, setCurrentUserData] = useState({});
+    const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps 
 
     // const email= localStorage.getItem("email");
     const docId= email+"@"+id+ "@"+ userid;
@@ -161,6 +163,7 @@ function BookWriting(props) {
                         })
                         .then(res => {                        
                             setBookWritingDatas(res["data"]);
+                            setIsPageLoaded(true);
                         })
                         .catch(error => {});
     
@@ -186,6 +189,7 @@ function BookWriting(props) {
                             console.log(metaDatas);
                             setBookWritingDatas(datas);
                             setMetaDatas(metaDatas);
+                            setIsPageLoaded(true);
                         })
                         .catch(error => {});
     
@@ -266,7 +270,9 @@ function BookWriting(props) {
           friends: dataState.friends
         });
       };
-    
+    if(!isPageLoaded) {
+        return <Loading/>;
+    }
     return (
         <div>
             <PapperBlock title="BookWriting Menu" whiteBg icon="ion-ios-grid-outline" desc="

@@ -17,6 +17,7 @@ import SaveIcon from '@material-ui/icons/Save';
 import axios from 'axios';
 
 import useWindowDimensions from '../../../useWindowDimensions';
+import Loading from '../../../components/Loading';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -72,6 +73,7 @@ function ReadingVocab(props) {
     const { height, width } = useWindowDimensions();
 
     
+    const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps 
     const [openMenu, setOpenMenu] = useState([]);
     const anchorRef = React.useRef(null);
     const itemsRef = useRef([]);
@@ -298,6 +300,7 @@ function ReadingVocab(props) {
                     setColor(tmp[8]);
                     setColorKor(tmp[9]);
                     itemsRef.current = itemsRef.current.slice(0, tmp[0].length);
+                    setIsPageLoaded(true);
                 })
                 .catch(error => {});
             
@@ -305,6 +308,9 @@ function ReadingVocab(props) {
         }
     }, [isLoaded]);  
 
+    if(!isPageLoaded) {
+        return <Loading/>;
+    }
 
     return (
         // 카드 뷰로 변경하기.

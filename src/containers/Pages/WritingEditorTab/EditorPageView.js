@@ -11,6 +11,7 @@ import UnderLine from '../../../images/underline.png';
 import parse from 'html-react-parser';
 import Rating from '../../../components/Rating/Rating';
 import FormControl from '@material-ui/core/FormControl';
+import Loading from '../../../components/Loading';
 
 const useStyles = makeStyles((theme) => ({
     textArea: {
@@ -69,6 +70,7 @@ function EditorPageView(props) {
 
     const classes = useStyles();
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps 
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
     let { id, label } = useParams();
     const [ datas, setDatas ]= useState({});
@@ -102,7 +104,6 @@ function EditorPageView(props) {
     });
     useEffect(() => {
         if(isLoaded) {
-            document.getElementById('textarea').setAttribute('readonly', 'readonly');
             if(label== "book") {
                 axios
                     .get(baseURL+"writing/edit-book-writing/"+id, {
@@ -120,6 +121,8 @@ function EditorPageView(props) {
                         setText(res["data"].essay_actual_rsrc_text);
                         setTextFieldInput(res["data"].evaluation_text);
                         setInputVal(res["data"].memo_html);
+                        setIsPageLoaded(true);
+                        document.getElementById('textarea').setAttribute('readonly', 'readonly');
                     })
                     .catch(error => {});
 
@@ -141,6 +144,8 @@ function EditorPageView(props) {
                         setText(res["data"].essay_actual_rsrc_text);
                         setTextFieldInput(res["data"].evaluation_text);
                         setInputVal(res["data"].memo_html);
+                        setIsPageLoaded(true);
+                        document.getElementById('textarea').setAttribute('readonly', 'readonly');
                     })
                     .catch(error => {});
 
@@ -311,7 +316,9 @@ function EditorPageView(props) {
     const getSelection= ()=> {        
         getSelectionText();
     };
-
+    if(!isPageLoaded) {
+        return <Loading/>;
+    }
     return (
         <div>
             <PapperBlock title="첨삭자료실" whiteBg icon="ion-ios-grid-outline" desc="

@@ -8,6 +8,7 @@ import AddIcon from '@material-ui/icons/Add';
 import useWindowDimensions from '../../../useWindowDimensions';
 import axios from 'axios';
 import Typography from '@material-ui/core/Typography';
+import Loading from '../../../components/Loading';
 
 const useStyles = makeStyles((theme) => ({
 }));
@@ -18,6 +19,7 @@ function EssayWritingBoardList(props) {
     const { height, width } = useWindowDimensions();
     const [isLoaded, setIsLoaded] = useState(false);
     const [datas, setDatas] = useState({});
+    const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps 
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
 
     const handleWritingFab= ()=> {
@@ -53,12 +55,16 @@ function EssayWritingBoardList(props) {
                 .then(res => {
                     setDatas(res["data"]);
                     console.log(res["data"]);
+                    setIsPageLoaded(true);
                         
                 })
                 .catch(error => {});
         }
 
     }, [isLoaded]);
+    if(!isPageLoaded) {
+        return <Loading/>;
+    }
     return (
         <div>
             <PapperBlock title="EssayWriting Menu" whiteBg icon="ion-ios-grid-outline" desc="

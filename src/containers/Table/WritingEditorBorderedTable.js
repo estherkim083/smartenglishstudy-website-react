@@ -21,6 +21,7 @@ import axios from 'axios';
 
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
+import Loading from '../../components/Loading';
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -102,6 +103,7 @@ function WritingEditorBorderedTable(props) {
     };
 
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps 
     //const [datas, setDatas] = useState([]);
     const [datas, setDatas] = useState({});
     const [bookDatas, setBookDatas] = useState({});
@@ -129,7 +131,7 @@ function WritingEditorBorderedTable(props) {
                     setDatas(res["data"]["essay_editor_data"]);
                     setBookDatas(res["data"]["book_editor_data"]);
                     console.log(res["data"]);
-                    
+                    setIsPageLoaded(true);
                 })
                 .catch(error => {});
         }   
@@ -201,6 +203,9 @@ function WritingEditorBorderedTable(props) {
                 console.log(res);  
                 window.location.href= '/writing/editor';
             });
+    }
+    if(!isPageLoaded) {
+      return <Loading/>;
     }
     return (
         <div className={classes.rootTable}>

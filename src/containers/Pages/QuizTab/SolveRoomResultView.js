@@ -15,6 +15,7 @@ import SyncIcon from '@material-ui/icons/Sync';
 
 import { storage } from '../../../firebase';
 import { ref, getDownloadURL } from "firebase/storage";
+import Loading from '../../../components/Loading';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -54,6 +55,9 @@ function SolveRoomResultView(props) {
     const [hasResult, setHasResult] = useState(false);
 
     const [isLoaded, setIsLoaded] = useState(false);
+    const [oneAxiosLoaded, setOneAxiosLoaded] = useState(false);
+    const [twoAxiosLoaded, setTwoAxiosLoaded] = useState(false);
+    const [isPageLoaded, setIsPageLoaded] = useState(false); //this helps 
     const baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
     let { id } = useParams();
     
@@ -69,6 +73,9 @@ function SolveRoomResultView(props) {
           localStorage.removeItem("ChatMessageOnce");
         } 
         setIsLoaded(true);
+        if(twoAxiosLoaded && oneAxiosLoaded) {
+            setIsPageLoaded(true);
+        }
     });
     useEffect(() => {
         if(isLoaded) {
@@ -99,6 +106,7 @@ function SolveRoomResultView(props) {
                     setQuestionNum(res["data"]["세부문항갯수"]);
                     const resDatas= res["data"]["세부정보"];
                     setDatas(resDatas);
+                    setOneAxiosLoaded(true);
                 })
                 .catch(error => {});
                         
@@ -119,6 +127,7 @@ function SolveRoomResultView(props) {
                         console.log(res["data"])
                         if(res["data"]== {} || Object.keys(res["data"]).length==0) {
                             setHasResult(false);
+                            setTwoAxiosLoaded(true);
                         }
                         else {
                             setHasResult(true);
@@ -128,11 +137,12 @@ function SolveRoomResultView(props) {
                             console.log(res["data"]["학생답"]);
                             console.log(res["data"]["실제답"]);
                             console.log(res["data"]["체크리스트"]);
+                            setTwoAxiosLoaded(true);
                         }
 
                     })
                     .catch(error => {});
-            
+        
         }
     },[isLoaded]);
     
@@ -140,6 +150,9 @@ function SolveRoomResultView(props) {
         setQuesId(index);
         setStudentAnswers({});
         const questionId= index+1;
+        setIsPageLoaded(false);
+        setOneAxiosLoaded(false);
+        setTwoAxiosLoaded(false);
             
         axios
             .get(baseURL+"quiz/quiz-detail/"+id+'/'+questionId, {
@@ -168,6 +181,7 @@ function SolveRoomResultView(props) {
                         .catch((error) => {
                         });
                 }
+                setOneAxiosLoaded(true);
             })
             .catch(error => {});
             
@@ -187,6 +201,7 @@ function SolveRoomResultView(props) {
             .then(res => {
                 if(res["data"]== {} || Object.keys(res["data"]).length==0) {
                     setHasResult(false);
+                    setTwoAxiosLoaded(true);
                 }
                 else {
                     setHasResult(true);
@@ -197,6 +212,7 @@ function SolveRoomResultView(props) {
                     console.log(res["data"]["학생답"]);
                     console.log(res["data"]["실제답"]);
                     console.log(res["data"]["체크리스트"]);
+                    setTwoAxiosLoaded(true);
                 }
             })
             .catch(error => {});
@@ -211,10 +227,10 @@ function SolveRoomResultView(props) {
             <div style={{display: 'flex', flexDirection: 'column'}}>
                 {x.map((_, index) => {
                     return (
-                        <div style={{position: 'relative', marginTop: '50px'}}>
+                        <div style={{position: 'relative', marginTop: '80px'}}>
                             {Object.keys(datas).length!= 0 && datas[index+1]!= undefined && datas[index+1]["label"]!= undefined && 
                             <>
-                                <Grid item xs={12}><Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="80%" height={40}>
+                                <Grid item xs={12}><Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="20%" height={40} boxShadow={6}>
                                     <Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'15px', marginTop: '10px'}}>
                                         {index+1}번. {datas[index+1]["label"]}문제.
                                     </Typography></Box>
@@ -399,6 +415,9 @@ function SolveRoomResultView(props) {
             </div>
         );
     };
+    if(!isPageLoaded) {
+        return <Loading/>;
+    }
     return (
         <div className={classes.root}>
         <PapperBlock title="퀴즈 출제방 결과보기 화면" whiteBg icon="ion-ios-grid-outline" desc="
@@ -428,7 +447,7 @@ function SolveRoomResultView(props) {
                         </Grid>
                     }
                     <Grid item xs={12}>
-                    {hasResult && typeAndNumQuestion.length != 0 && typeAndNumQuestion[quesId]!= undefined &&<Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="80%" height={40}><Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'23px'}}>
+                    {hasResult && typeAndNumQuestion.length != 0 && typeAndNumQuestion[quesId]!= undefined &&<Box border={2} borderColor={fade("#EC407A", 0.8)} style={{padding: '4px'}} width="30%" height={40} boxShadow={6}><Typography component="h6" style={{fontFamily:'CookieRun-Regular', fontSize:'23px'}}>
                         {quesId+1} 번.&nbsp;&nbsp;{typeAndNumQuestion[quesId]["type"]} 문제&nbsp;&nbsp;&nbsp;1번-{typeAndNumQuestion[quesId]["num"]}번
                     </Typography></Box>}
                     {hasResult== false && 

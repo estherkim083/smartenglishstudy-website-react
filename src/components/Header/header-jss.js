@@ -192,6 +192,12 @@ const styles = theme => ({
     marginTop: '-10px',
     alignItems: 'center',
     marginLeft: '590px',
+    "@media (min-width: 1000px)": {
+      marginLeft: '590px',
+    },
+    "@media (min-width: 1620px)": {
+      marginLeft: '750px',
+    },
     padding: '10px 20px 5px',
     height: 64,
     position: 'absolute',

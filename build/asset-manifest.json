@@ -1,6 +1,7 @@
 {
   "files": {
-    "main.js": "/static/js/main.a61804fa.js",
+    "main.css": "/static/css/main.6d2a720a.css",
+    "main.js": "/static/js/main.a43006f3.js",
     "static/js/1999.27aa9f47.chunk.js": "/static/js/1999.27aa9f47.chunk.js",
     "static/js/2780.b98c7419.chunk.js": "/static/js/2780.b98c7419.chunk.js",
     "static/js/2532.94650998.chunk.js": "/static/js/2532.94650998.chunk.js",
@@ -67,7 +68,6 @@
     "static/media/readbooks.jpg": "/static/media/readbooks.4b6de66508a311dbe063.jpg",
     "static/media/business.jpg": "/static/media/business.adda6bf58c5f513bb987.jpg",
     "static/media/paper-lov.png": "/static/media/paper-lov.aedf8cf25f4e97eb61c4.png",
-    "static/media/circleshoes.jpg": "/static/media/circleshoes.1ff58c8b89b7a5ecc510.jpg",
     "static/media/listening.png": "/static/media/listening.9459c40969891f80c9de.png",
     "static/media/study.jpg": "/static/media/study.0ce1df4031bd3075ddfb.jpg",
     "static/media/girldictionary.jpg": "/static/media/girldictionary.de1808fcd221eebc733f.jpg",
@@ -75,7 +75,6 @@
     "static/media/write.jpg": "/static/media/write.c4a645af296c8c67a118.jpg",
     "static/media/upload.jpg": "/static/media/upload.be1b6d69eb96c9100e58.jpg",
     "static/media/quiz.jpg": "/static/media/quiz.3df844291ccee1b4267e.jpg",
-    "static/media/student.png": "/static/media/student.72e097079015b6a83a26.png",
     "static/media/workshop.jpg": "/static/media/workshop.d6336126241e760be764.jpg",
     "static/media/mypage.png": "/static/media/mypage.2ffe7589e3a112179a90.png",
     "static/media/user.png": "/static/media/user.8d49e377c7c342895ec2.png",
@@ -84,7 +83,8 @@
     "static/media/svg": "/static/media/2a0bc34f2fdf6d6b.6e0f8a48a90f41998086.svg",
     "static/media/decoration_dark.svg": "/static/media/decoration_dark.1df450a29f7757b0764efd25fb64a540.svg",
     "static/media/decoration_light.svg": "/static/media/decoration_light.eea89ed54736fac21b537517f2d7df2b.svg",
-    "main.a61804fa.js.map": "/static/js/main.a61804fa.js.map",
+    "main.6d2a720a.css.map": "/static/css/main.6d2a720a.css.map",
+    "main.a43006f3.js.map": "/static/js/main.a43006f3.js.map",
     "1999.27aa9f47.chunk.js.map": "/static/js/1999.27aa9f47.chunk.js.map",
     "2780.b98c7419.chunk.js.map": "/static/js/2780.b98c7419.chunk.js.map",
     "2532.94650998.chunk.js.map": "/static/js/2532.94650998.chunk.js.map",
@@ -150,6 +150,7 @@
     "6141.02f2d41c.chunk.js.map": "/static/js/6141.02f2d41c.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.a61804fa.js"
+    "static/css/main.6d2a720a.css",
+    "static/js/main.a43006f3.js"
   ]
 }
